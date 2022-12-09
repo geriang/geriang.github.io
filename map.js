@@ -1,3 +1,5 @@
+// let coordinate = [1.29050566271653, 103.822587341402]
+
 function initMap (){
 // Initalizing Map
 const singapore = [1.3521,103.8198];
@@ -13,6 +15,10 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 let changiAirport = [1.3644,103.9915];
 let marker = L.marker(changiAirport).addTo(map);
+
+console.log(coordinate)
+L.marker(coordinate).addTo(map)
+
 
 
 return map;
