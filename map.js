@@ -16,7 +16,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 let changiAirport = [1.3644,103.9915];
 let marker = L.marker(changiAirport).addTo(map);
 
-console.log(coordinate)
+loadOneMapData()
 L.marker(coordinate).addTo(map)
 
 
