@@ -3,17 +3,13 @@ const baseApiUrl = "https://developers.onemap.sg/commonapi/search?searchVal="
 const getPostalCode = 159967
 const getOneMapData = `${baseApiUrl}${getPostalCode}&returnGeom=Y&getAddrDetails=Y&pageNum=1`
 
-let coordinate = []
+async function loadOneMapData(){
 
-async function loadOneMapData(coordinate){
     const response = await axios.get(getOneMapData);
-
     const lat = response.data.results[0].LATITUDE
     const lon = response.data.results[0].LONGITUDE
     
     coordinate = [lat, lon]
-
-    return coordinate;
 
 }
 
