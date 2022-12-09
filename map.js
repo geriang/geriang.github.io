@@ -9,5 +9,12 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
+// adding Marker
+
+let changiAirport = [1.3644,103.9915];
+let marker = L.marker(changiAirport).addTo(map);
+
+
 return map;
 }
+

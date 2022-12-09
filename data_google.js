@@ -5,6 +5,14 @@ async function loadData(){
     const response = await axios.get("https://sheet.best/api/sheets/15a96cb5-d6da-4862-8940-df32a8ba86fc")
     console.log(response.data)
 
+    // retrieve postal codes from googlesheet
+    const postalCode = response.data[0].Postal_Code
+    console.log(postalCode)
+
+    
+
+
+
 }
 
 loadData()
