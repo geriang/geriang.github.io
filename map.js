@@ -16,9 +16,39 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 let changiAirport = [1.3644,103.9915];
 let marker = L.marker(changiAirport).addTo(map);
 
-await loadOneMapData()
-console.log("this is the coordinate var", coordinate)
-L.marker(coordinate).addTo(map)
+// await loadOneMapData()
+// L.marker(coordinate).addTo(map)
+
+// console.log("this is the coordinate var", coordinate)
+
+
+// Create cluster
+// function getRandomLatLng(map) {
+//     // get the boundaries of the map
+//     let bounds = map.getBounds();
+//     let southWest = bounds.getSouthWest();
+//     let northEast = bounds.getNorthEast();
+//     let lngSpan = northEast.lng - southWest.lng;
+//     let latSpan = northEast.lat - southWest.lat;
+
+//     let randomLng = Math.random() * lngSpan + southWest.lng;
+//     let randomLat = Math.random() * latSpan + southWest.lat;
+
+//     return [ randomLat, randomLng,];
+// }
+
+
+// // create marker cluster
+// let markerClusterLayer = L.markerClusterGroup();
+
+// for (let i = 0; i < 1000; i++) {
+//     let pos = getRandomLatLng(map);
+//     L.marker(pos).addTo(markerClusterLayer);
+// }
+
+// markerClusterLayer.addTo(map);
+
+// getRandomLatLng(map)
 
 
 return map;

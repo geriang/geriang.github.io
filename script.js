@@ -2,7 +2,7 @@
 
 async function main () {
 
-initMap()
+ initMap()
 ;
 
 
