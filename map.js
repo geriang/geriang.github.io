@@ -13,11 +13,17 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // adding Marker
 
-let changiAirport = [1.3644,103.9915];
-let marker = L.marker(changiAirport).addTo(map);
+// let changiAirport = [1.3644,103.9915];
+// let marker = L.marker(changiAirport).addTo(map);
 
-// await loadOneMapData()
-// L.marker(coordinate).addTo(map)
+
+
+
+await loadOneMapData()
+// console.log(coordinate)
+let markers = coordinate
+    L.marker(markers).addTo(map)
+    
 
 // console.log("this is the coordinate var", coordinate)
 

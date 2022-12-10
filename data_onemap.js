@@ -18,13 +18,8 @@ async function loadOneMapData(){
             console.log(coordinate);
             // let marker = L.marker(coordinate); 
             // marker.addTo(map);
-            // const allCoordinates = []
-            // allCoordinates.push(coordinate)
-            
-        
-
-            // console.log(allCoordinates)
     }
+    
 }
 
 
