@@ -16,40 +16,17 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // let changiAirport = [1.3644,103.9915];
 // let marker = L.marker(changiAirport).addTo(map);
 
-let postalCodes = ["159967", "560561", "018956", "390032", "249565"];
+// postalCodes will eventually link with data_google.js
+let postalCodes = ["159967", "560561", "018956", "390032", "249565", "310204", "640433", "698924", "529510", "520860"];
+let markerClusterLayer = L.markerClusterGroup()
 
 for (let i of postalCodes){
  let markers = await loadOneMapData(i)
- L.marker(markers).addTo(map);
+//  L.marker(markers).addTo(map);
+ let pos = markers
+ L.marker(pos).addTo(markerClusterLayer)
+ markerClusterLayer.addTo(map);
 }
-
-// Create cluster
-// function getRandomLatLng(map) {
-//     // get the boundaries of the map
-//     let bounds = map.getBounds();
-//     let southWest = bounds.getSouthWest();
-//     let northEast = bounds.getNorthEast();
-//     let lngSpan = northEast.lng - southWest.lng;
-//     let latSpan = northEast.lat - southWest.lat;
-
-//     let randomLng = Math.random() * lngSpan + southWest.lng;
-//     let randomLat = Math.random() * latSpan + southWest.lat;
-
-//     return [ randomLat, randomLng,];
-// }
-
-
-// // create marker cluster
-// let markerClusterLayer = L.markerClusterGroup();
-
-// for (let i = 0; i < 1000; i++) {
-//     let pos = getRandomLatLng(map);
-//     L.marker(pos).addTo(markerClusterLayer);
-// }
-
-// markerClusterLayer.addTo(map);
-
-// getRandomLatLng(map)
 
 
 return map;
