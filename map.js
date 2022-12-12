@@ -16,17 +16,12 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // let changiAirport = [1.3644,103.9915];
 // let marker = L.marker(changiAirport).addTo(map);
 
+let postalCodes = ["159967", "560561", "018956", "390032", "249565"];
 
-
-
-await loadOneMapData()
-// console.log(coordinate)
-let markers = coordinate
-    L.marker(markers).addTo(map)
-    
-
-// console.log("this is the coordinate var", coordinate)
-
+for (let i of postalCodes){
+ let markers = await loadOneMapData(i)
+ L.marker(markers).addTo(map);
+}
 
 // Create cluster
 // function getRandomLatLng(map) {
