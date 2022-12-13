@@ -1,8 +1,17 @@
+
+#mapContainer{
+    position:relative;
+}
+
+
 #map {
     height:100vh;
 }
 
-#form {
-
+#inputContainer {
+    position:absolute;
     height:300px;
+    top: 25px;
+    left:60px;
+    z-index: 314159;
 }

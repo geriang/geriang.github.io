@@ -21,7 +21,7 @@ let postalCodes = ["159967", "560561", "018956", "390032", "249565", "310204", "
 let markerClusterLayer = L.markerClusterGroup()
 
 for (let i of postalCodes){
- let markers = await loadOneMapData(i)
+ let markers = await loadOneMapDataCoordinate(i)
 //  L.marker(markers).addTo(map);
  let pos = markers
  L.marker(pos).addTo(markerClusterLayer)
