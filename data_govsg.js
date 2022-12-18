@@ -1,13 +1,20 @@
-// https://sheety.co/docs/spreadsheet
-// https://hevodata.com/learn/google-sheets-rest-api-integration/
+const dataGovSGBaseApiUrl = "https://data.gov.sg/api/action/datastore_search"
+const resourceID = "?resource_id=f1765b54-a209-4718-8d38-a39237f502b3"
+const filterMonth = "&filters={'month':'2022-12'}"
+
+async function loadGovSgData(){
+    const response = await axios.get(`${dataGovSGBaseApiUrl}${resourceID}&filters={"month":"2022-12"}&limit=1105`)
+    const allRecords = response.data.result.records
+    for (let i of allRecords){
+        let address = i.block +" "+ i.street_name
+        console.log(address)
+    }
 
 
-// Google API Key: AIzaSyDi6sxlrmrdrnZhv_JX69tvO6MUl8GHLYo
-// Google API Key: AIzaSyDi6sxlrmrdrnZhv_JX69tvO6MUl8GHLYo
-// Client ID: 907453537207-cq0fr7i9q7f36ssr25gme7mcp1v5o3m7.apps.googleusercontent.com
-// Client Secret: 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
+}
 
-
+// x.result.records[1].block
+loadGovSgData()
 // const googleSheetBaseApiUrl = "https://sheets.googleapis.com"
 // https://docs.google.com/spreadsheets/d/1xQUBjJC78dJH-4IKNPmwC4oy0OGt3WMTj56TnSNVvCA/edit?usp=sharing
 
