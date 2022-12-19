@@ -4,7 +4,7 @@ const baseApiUrl = "https://developers.onemap.sg/commonapi/search?searchVal=";
 // https://developers.onemap.sg/commonapi/search?searchVal=159967&returnGeom=Y&getAddrDetails=Y&pageNum=1`
 
 // function that requires a postal code as input to generate coordinates
-async function loadOneMapDataCoordinate(postalCode){
+async function loadOneMapDataCoordinate(postalCode) {
 
     let endpoint = `${baseApiUrl}${postalCode}&returnGeom=Y&getAddrDetails=Y&pageNum=1`;
     let response = await axios.get(endpoint);
@@ -15,7 +15,7 @@ async function loadOneMapDataCoordinate(postalCode){
     return coordinate;
 }
 // function that requires an address as input to generate coordinates
-async function loadOneMapDataCoordinateUsingAddress(eachAddress){
+async function loadOneMapDataCoordinateUsingAddress(eachAddress) {
 
     let endpoint = `${baseApiUrl}${eachAddress}&returnGeom=Y&getAddrDetails=Y&pageNum=1`;
     let response = await axios.get(endpoint);
@@ -27,7 +27,7 @@ async function loadOneMapDataCoordinateUsingAddress(eachAddress){
 }
 
 // function that requires a postal code as input to generate address
-async function loadOneMapDataAddress(postalCode){
+async function loadOneMapDataAddress(postalCode) {
 
     let endpoint = `${baseApiUrl}${postalCode}&returnGeom=Y&getAddrDetails=Y&pageNum=1`;
     let response = await axios.get(endpoint);
@@ -39,7 +39,7 @@ async function loadOneMapDataAddress(postalCode){
 }
 
 // function that requires a postal code as input to generate estate
-async function loadOneMapDataEstate(postalCode){
+async function loadOneMapDataEstate(postalCode) {
 
     let endpoint = `${baseApiUrl}${postalCode}&returnGeom=Y&getAddrDetails=Y&pageNum=1`;
     let response = await axios.get(endpoint);

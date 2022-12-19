@@ -1,13 +1,13 @@
-async function main () {
- 
-document.querySelector('input[type="postalCode"]').addEventListener("keyup", async function(){
+async function main() {
+
+  document.querySelector('input[type="postalCode"]').addEventListener("keyup", async function () {
     getPostalCode = document.querySelector('input[type="postalCode"]').value;
     let estate = await loadOneMapDataEstate(getPostalCode)
     let add = await loadOneMapDataAddress(getPostalCode);
     // console.log(add)
-    if (getPostalCode.length == 6){
-    let oldAddress = document.getElementById("address")
-    oldAddress.innerHTML = `<div id="address" class="form-floating">
+    if (getPostalCode.length == 6) {
+      let oldAddress = document.getElementById("address")
+      oldAddress.innerHTML = `<div id="address" class="form-floating">
     <input type="address" class="form-control" id="floatingInput" name="address" placeholder="Address" value="${add}">
     <label for="floatingInput">Address</label>
   </div>
@@ -18,21 +18,39 @@ document.querySelector('input[type="postalCode"]').addEventListener("keyup", asy
 
     }
     else {
-        let oldAddress = document.getElementById("address")
-        oldAddress.innerHTML = `<div id="address" class="form-floating">
+      let oldAddress = document.getElementById("address")
+      oldAddress.innerHTML = `<div id="address" class="form-floating">
         <input type="address" class="form-control" id="floatingInput" name="address" placeholder="Address">
         <label for="floatingInput">Address</label>
         </div>`
-            }
-})
+    }
+  })
 
-document.querySelector("#formButton").addEventListener("click", async function(){
-  let inputAdd = document.querySelector('input[type="address"]').value
-  console.log(inputAdd)
-  await initMap(inputAdd);
-  console.log("submitted")
+  document.querySelector("#formButton").addEventListener("click", async function () {
+    let inputAdd = document.querySelector('input[type="address"]').value
+    let inputAddCap = inputAdd.toUpperCase()
+    let inputAddCapNoBlk = inputAddCap.slice(3)
+    if (inputAddCapNoBlk.includes("AVENUE")) {
+      let streetName = inputAddCapNoBlk.replace("AVENUE", "AVE")
+      console.log(streetName)
+      await initMap(streetName);
 
-})
+    } else if (inputAddCapNoBlk.includes("STREET")) {
+      let streetName = inputAddCapNoBlk.replace("STREET", "ST")
+      console.log(streetName)
+      await initMap(streetName);
+
+    } else {
+
+      let streetName = inputAddCapNoBlk
+      console.log(streetName)
+      await initMap(streetName);
+
+    }
+
+    console.log("submitted")
+
+  })
 }
 
-main ();
+main();
