@@ -38,7 +38,7 @@
           
        
 <!-- Form -->
-    <div class="container m-3">
+    <div class="container-fluid m-3">
         <div class="form-floating mb-3">
             <input type="name" class="form-control" id="floatingInput" name="name" placeholder="Name">
             <label for="floatingInput">Name</label>
@@ -47,12 +47,22 @@
             <input type="postalCode" class="form-control" id="floatingInput" name="postalCode" placeholder="Postal Code">
             <label for="floatingInput">Postal Code</label>
           </div>
-          <div id="address" class="form-floating">
-            <input type="address" class="form-control" id="floatingInput" name="address" placeholder="Address">
+          <div id="address" class="form-floating mb-3">
+            <input type="address" class="form-control" id="floatingInput" name="address" placeholder="Address" value="">
             <label for="floatingInput">Address</label>
           </div>
+          <div class="form-floating mb-3">
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Select HDB Flat-Type</option>
+            <option value="1">HDB One/Two-Room</option>
+            <option value="2">HDB Three-Room</option>
+            <option value="3">HDB Four-Room</option>
+            <option value="4">HDB Five-Room</option>
+            <option value="5">HDB EA/EM</option>
+          </select>
+          </div>
           <div class="container mt-3">
-            <button type="submit" id="button" class="btn btn-primary">Submit</button>
+            <button type="submit" id="formButton" class="btn btn-primary">Submit</button>
         </div>
           
     </div>
@@ -64,6 +74,21 @@
 <!--Input Container ends  -->
 
 <!--Search Container starts-->
+
+<div id="searchContainer">
+  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Search
+    </button>
+
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body">
+        
+     
+
+</div>
+</div>
+
+</div>  
 
 <!--Search Container ends -->
 
