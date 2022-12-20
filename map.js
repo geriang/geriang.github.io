@@ -1,31 +1,45 @@
-
-async function initMap(streetName) {
-    // Initalizing Map
-    const singapore = [1.3521, 103.8198];
-    const map = L.map('map').setView(singapore, 11.5);
+// load map function
+function loadMap() {
+    const startView = [1.3521, 103.8198]
+    const map = L.map('map').setView(startView, 11.5);
 
     // adding Tile Layer
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    const tileLayer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
+    })
+
+    tileLayer.addTo(map);
+
+    return map
+
+}
+
+// load results on result layer that is added to map
+async function loadResult(streetName, flatType, resultLayer, map) {
 
 
+    // Find center point of searched results on map
+    let mapStartLocation = await loadCoordinate(2022, streetName, flatType);
+    let midIndex = Math.round((mapStartLocation.length) / 2)
+    let startView = mapStartLocation[midIndex]
+    console.log(midIndex)
 
-    // adding Marker
 
-    // let changiAirport = [1.3644,103.9915];
-    // let marker = L.marker(changiAirport).addTo(map);
-
-    // let streetName = "ANG MO KIO AVE 10"
+    // adding Marker Cluster Layer
     let markerClusterLayer = L.markerClusterGroup()
 
+    // importing coordinates from data_govsg.js via loadCoordinate function
+    let coordinates = await loadCoordinate(2022, streetName, flatType)
+    console.log(coordinates)
 
-    let priceInfo = await loadResalePrice(2022, streetName)
+    // importing flat price information from data_govsg.js via loadResalePrice function
+    let priceInfo = await loadResalePrice(2022, streetName, flatType)
     console.log(priceInfo)
 
-    let coordinates = await loadCoordinate(2022, streetName)
-    console.log(coordinates)
+    // importing transacted date information from data_govsg.js via loadResalePrice function
+    let transactedDate = await loadTransactedDate(2022, streetName, flatType)
+    console.log(transactedDate)
 
 
     // for (let i = 0; i < coordinates.length; i++){
@@ -33,43 +47,28 @@ async function initMap(streetName) {
     //     L.marker(coordinates[i])
     //     .bindPopup(`${priceInfo[i]}`)
 
-
     //     .addTo(markerClusterLayer)
     // markerClusterLayer.addTo(map)
 
-
-
     // }
 
-    coordinates.map((pos,index) => {
-
+    coordinates.map((pos, index) => {
         L.marker(pos)
-        .bindPopup(`${pos,priceInfo[index]}`)
+            .bindPopup(`Transacted Price: $${pos, priceInfo[index]}<br>
+                        Transacted Month: ${pos, transactedDate[index]}
+            `)
 
 
-        .addTo(markerClusterLayer)
-    markerClusterLayer.addTo(map)
+            .addTo(markerClusterLayer)
+        markerClusterLayer.addTo(resultLayer)
 
     })
+    map.flyTo(startView, 15, {
+        animate: true,
+        duration: 2 
+    });
 
 
-
-    // for (let i of coordinates) {
-    //     let pos = i
-
-    //     L.marker(pos)
-    //         .bindPopup()
-
-
-    //         .addTo(markerClusterLayer)
-    //     markerClusterLayer.addTo(map)
-
-
-    // }
-
-
-
-    return map;
 }
 
 
