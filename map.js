@@ -18,28 +18,61 @@ function loadMap() {
 // load results on result layer that is added to map
 async function loadResult(streetName, flatType, resultLayer, map) {
 
-
     // Find center point of searched results on map
-    let mapStartLocation = await loadCoordinate(2022, streetName, flatType);
-    let midIndex = Math.round((mapStartLocation.length) / 2)
-    let startView = mapStartLocation[midIndex]
-    console.log(midIndex)
+    let coordinates = await loadCoordinate(2022, streetName, flatType);
+    let midIndex = Math.round((coordinates.length) / 2)
+    let startView = coordinates[midIndex]
+    // // console.log(midIndex)
 
 
     // adding Marker Cluster Layer
     let markerClusterLayer = L.markerClusterGroup()
 
     // importing coordinates from data_govsg.js via loadCoordinate function
-    let coordinates = await loadCoordinate(2022, streetName, flatType)
-    console.log(coordinates)
+    // replace coordinates with mapstartlocation var
+    // let coordinates = await loadCoordinate(2022, streetName, flatType)
+    // console.log(coordinates.length)
 
     // importing flat price information from data_govsg.js via loadResalePrice function
-    let priceInfo = await loadResalePrice(2022, streetName, flatType)
-    console.log(priceInfo)
+    let data = await loadTransactionInfo(2022, streetName, flatType)
+    console.log(data)
+    let transactedBlock = data[0].eachBlock
+    console.log(transactedBlock)
+    // console.log(priceInfo.length)
 
-    // importing transacted date information from data_govsg.js via loadResalePrice function
-    let transactedDate = await loadTransactedDate(2022, streetName, flatType)
-    console.log(transactedDate)
+    // // importing transacted date information from data_govsg.js via loadTransactedDate function
+    // let transactedDate = await loadTransactedDate(2022, streetName, flatType)
+    // // console.log(transactedDate.length)
+
+    // // importing transacted block information from data_govsg.js via loadTransactedBlock function
+    // let transactedBlock = await loadTransactedBlock(2022, streetName, flatType)
+    // console.log(transactedBlock.length)
+
+    // // importing transacted floor information from data_govsg.js via loadTransactedFloor function
+    // let transactedFloor = await loadTransactedFloor(2022, streetName, flatType)
+    // console.log(transactedFloor.length)
+
+    coordinates.map((pos, index) => {
+        L.marker(pos)
+            .bindPopup(`Transacted Block: Block ${pos, data[index].eachBlock}<br>
+                        Transacted Floor: Level ${pos, data[index].eachFloor}<br>
+                        Transacted Price: $${pos, data[index].eachPrice}<br>
+                        Transacted Month: ${pos, data[index].eachDate}
+            `)
+
+
+            .addTo(markerClusterLayer)
+        markerClusterLayer.addTo(resultLayer)
+
+    })
+    map.flyTo(startView, 15, {
+        animate: true,
+        duration: 2
+    });
+
+
+}
+// add more info such as blk, floor onto pop up
 
 
     // for (let i = 0; i < coordinates.length; i++){
@@ -52,46 +85,5 @@ async function loadResult(streetName, flatType, resultLayer, map) {
 
     // }
 
-    coordinates.map((pos, index) => {
-        L.marker(pos)
-            .bindPopup(`Transacted Price: $${pos, priceInfo[index]}<br>
-                        Transacted Month: ${pos, transactedDate[index]}
-            `)
 
 
-            .addTo(markerClusterLayer)
-        markerClusterLayer.addTo(resultLayer)
-
-    })
-    map.flyTo(startView, 15, {
-        animate: true,
-        duration: 2 
-    });
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// let postalCodes = ["159967", "560561", "018956", "390032", "249565", "310204", "640433", "698924", "529510", "520860"];
-
-// let markerClusterLayer = L.markerClusterGroup()
-
-// for (let i of postalCodes){
-//     let markers = await loadOneMapDataCoordinate(i)
-//    //  L.marker(markers).addTo(map);
-//     let pos = markers
-//     L.marker(pos).addTo(markerClusterLayer)
-//     markerClusterLayer.addTo(map);
-//    }

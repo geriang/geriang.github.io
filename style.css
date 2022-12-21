@@ -23,3 +23,7 @@
     left:120px;
     z-index: 1;
 }
+
+.mystyle{
+    display: none;
+}

@@ -31,20 +31,21 @@
 
   <!-- Input Container start -->
   <div id="inputContainer">
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+    <button id="searchButton" class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
       aria-expanded="false" aria-controls="collapseExample">
-      Expand
+      Search
     </button>
 
-    <div class="collapse" id="collapseExample">
+    <!-- <div class="collapse" id="collapseExample"> -->
+    <div class="collapse multi-collapse" id="collapseExample">
       <div class="card card-body">
 
 
         <!-- Form -->
         <div class="container-fluid m-3">
-          <div class="form-floating mb-3">
+          <!-- <div class="form-floating mb-3">
             <input type="name" class="form-control" id="floatingInput" name="name" placeholder="Name">
-            <label for="floatingInput">Name</label>
+            <label for="floatingInput">Name</label> -->
           </div>
           <div class="form-floating mb-3">
             <input type="postalCode" class="form-control" id="floatingInput" name="postalCode"
@@ -52,7 +53,7 @@
             <label for="floatingInput">Postal Code</label>
           </div>
           <div id="address" class="form-floating mb-3">
-            <input type="address" class="form-control" id="floatingInput" name="address" placeholder="Address" value="">
+            <input type="address" readonly class="form-control-plaintext" id="floatingInput" name="address" placeholder="Address" value="">
             <label for="floatingInput">Address</label>
           </div>
           <div class="form-floating mb-3">
@@ -68,9 +69,11 @@
             </select>
           </div>
           <div class="container mt-3">
-            <button type="submit" id="formButton" class="btn btn-primary">Submit</button>
+            <!-- <button type="submit" id="formButton" class="btn btn-primary" data-toggle="collapse" data-target='collapseExample'>Submit</button> -->
+            <button type="submit" id="formButton" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="CollapseExample">Submit</button>
           </div>
-
+         
+           
         </div>
       </div>
     </div>
