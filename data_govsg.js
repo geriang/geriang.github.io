@@ -27,7 +27,7 @@ async function loadCoordinate(year, streetName, flatType) {
 
 }
 
-// enter month, year and street name to retrieve transacted information 
+// enter month, year and street name to retrieve transaction information 
 async function loadTransactionInfo(year, streetName, flatType) {
     const response = await axios.get(`${dataGovSGBaseApiUrl}${resourceID}&q={"month":"${year}","street_name":"${streetName}","flat_type":"${flatType}"}&limit=1200`)
     const record = response.data.result.records
@@ -47,49 +47,3 @@ async function loadTransactionInfo(year, streetName, flatType) {
     return array
 
 }
-
-
-// // enter month, year and street name to retrieve transacted date 
-// async function loadTransactedDate(year, streetName, flatType) {
-//     let array = []
-//     const response = await axios.get(`${dataGovSGBaseApiUrl}${resourceID}&q={"month":"${year}","street_name":"${streetName}","flat_type":"${flatType}"}&limit=1200`)
-//     const record = response.data.result.records
-//     for (eachRecord of record) {
-//         let eachDate = eachRecord.month
-//         array.push(eachDate)
-
-//     }
-
-//     return array
-
-// }
-
-// // enter month, year and street name to retrieve transacted block 
-// async function loadTransactedBlock(year, streetName, flatType) {
-//     let array = []
-//     const response = await axios.get(`${dataGovSGBaseApiUrl}${resourceID}&q={"month":"${year}","street_name":"${streetName}","flat_type":"${flatType}"}&limit=1200`)
-//     const record = response.data.result.records
-//     for (eachRecord of record) {
-//         let eachBlock = eachRecord.block
-//         array.push(eachBlock)
-
-//     }
-
-//     return array
-
-// }
-
-// // enter month, year and street name to retrieve transacted floor 
-// async function loadTransactedFloor(year, streetName, flatType) {
-//     let array = []
-//     const response = await axios.get(`${dataGovSGBaseApiUrl}${resourceID}&q={"month":"${year}","street_name":"${streetName}","flat_type":"${flatType}"}&limit=1200`)
-//     const record = response.data.result.records
-//     for (eachRecord of record) {
-//         let eachFloor = eachRecord.storey_range
-//         array.push(eachFloor)
-
-//     }
-
-//     return array
-
-// }

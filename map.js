@@ -26,24 +26,8 @@ async function loadResult(streetName, flatType, resultLayer, map) {
     // adding Marker Cluster Layer
     let markerClusterLayer = L.markerClusterGroup()
 
-    // importing flat price information from data_govsg.js via loadResalePrice function
+    // importing flat price, block, floor information etc. from data_govsg.js via loadTransactionInfo function
     let data = await loadTransactionInfo(2022, streetName, flatType)
-    // console.log(data)
-    // let transactedBlock = data[0].eachBlock
-    // console.log(transactedBlock)
-    // console.log(priceInfo.length)
-
-    // // importing transacted date information from data_govsg.js via loadTransactedDate function
-    // let transactedDate = await loadTransactedDate(2022, streetName, flatType)
-    // // console.log(transactedDate.length)
-
-    // // importing transacted block information from data_govsg.js via loadTransactedBlock function
-    // let transactedBlock = await loadTransactedBlock(2022, streetName, flatType)
-    // console.log(transactedBlock.length)
-
-    // // importing transacted floor information from data_govsg.js via loadTransactedFloor function
-    // let transactedFloor = await loadTransactedFloor(2022, streetName, flatType)
-    // console.log(transactedFloor.length)
 
     coordinates.map((pos, index) => {
         L.marker(pos)
@@ -62,7 +46,7 @@ async function loadResult(streetName, flatType, resultLayer, map) {
         duration: 2,
         
     });
-    // remove spinner after loading
+    // remove spinner after finish loading
     const spinnerBackground = document.querySelector("#spinner-background")
     spinnerBackground.style.display = "none";
 }

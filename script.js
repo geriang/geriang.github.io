@@ -12,8 +12,9 @@ async function main() {
     // picking up postal code value from form to match One Map data then returning address and building/estate values
     document.querySelector('input[type="postalCode"]').addEventListener("keyup", async function () {
       getPostalCode = document.querySelector('input[type="postalCode"]').value;
-      let estate = await loadOneMapDataEstate(getPostalCode)
-      let add = await loadOneMapDataAddress(getPostalCode);
+      let data = await loadOneMapData(getPostalCode)
+      let estate = data.eachEstate
+      let add = data.eachAdd
 
       // updating address and creating building/estate fields in form 
       if (getPostalCode.length == 6) {
@@ -98,6 +99,7 @@ async function main() {
       console.log("submitted")
 
     })
+
   }
 }
 

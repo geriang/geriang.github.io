@@ -8,37 +8,37 @@ const baseApiUrl = "https://developers.onemap.sg/commonapi/search?searchVal=";
 // /privateapi/commonsvc/revgeocode?location={latitude,longitude}&token={token}&buffer={buffer}&addressType={addressType}
 const basePrivateApiUrl = "https://developers.onemap.sg/privateapi/commonsvc/revgeocode?"
 
-// function that requires a postal code as input to generate coordinates
-async function loadOneMapDataCoordinate(postalCode) {
+// function that requires a postal code as input to generate address amd estate
 
+async function loadOneMapData(postalCode) {
+    let object = {}
     let endpoint = `${baseApiUrl}${postalCode}&returnGeom=Y&getAddrDetails=Y&pageNum=1`;
     let response = await axios.get(endpoint);
-    let eachLat = response.data.results[0].LATITUDE;
-    let eachLon = response.data.results[0].LONGITUDE;
-    let coordinate = [eachLat, eachLon];
 
-    return coordinate;
-}
-// function that requires a postal code as input to generate address
-async function loadOneMapDataAddress(postalCode) {
-
-    let endpoint = `${baseApiUrl}${postalCode}&returnGeom=Y&getAddrDetails=Y&pageNum=1`;
-    let response = await axios.get(endpoint);
     let eachBlk = response.data.results[0].BLK_NO;
     let eachRoad = response.data.results[0].ROAD_NAME;
     let eachAdd = `${eachBlk} ${eachRoad}`
 
-    return eachAdd;
-}
-// function that requires a postal code as input to generate estate
-async function loadOneMapDataEstate(postalCode) {
-
-    let endpoint = `${baseApiUrl}${postalCode}&returnGeom=Y&getAddrDetails=Y&pageNum=1`;
-    let response = await axios.get(endpoint);
     let eachEstate = response.data.results[0].BUILDING;
-    console.log(eachEstate)
-    return eachEstate;
+
+    object = {eachAdd, eachEstate}
+    console.log(object)
+
+    return object
+
 }
+
+// async function loadOneMapDataCoordinate(postalCode) {
+
+//     let endpoint = `${baseApiUrl}${postalCode}&returnGeom=Y&getAddrDetails=Y&pageNum=1`;
+//     let response = await axios.get(endpoint);
+//     let eachLat = response.data.results[0].LATITUDE;
+//     let eachLon = response.data.results[0].LONGITUDE;
+//     let coordinate = [eachLat, eachLon];
+
+//     return coordinate;
+// }
+
 // function that requires an address as input to generate coordinates
 async function loadOneMapDataCoordinateUsingAddress(eachAddress) {
 
@@ -51,14 +51,14 @@ async function loadOneMapDataCoordinateUsingAddress(eachAddress) {
     return coordinate;
 }
 // function that requires coordinates as input to generate surrounding HDBs
-async function loadOneMapDataHDB(postalCode) {
-    let coordinate = await loadOneMapDataCoordinate(postalCode)
-    console.log(coordinate)
-    let endpoint = `${basePrivateApiUrl}location=${coordinate}&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjk2MTYsInVzZXJfaWQiOjk2MTYsImVtYWlsIjoic2hvcHBpbmdhY2M4NEBnbWFpbC5jb20iLCJmb3JldmVyIjpmYWxzZSwiaXNzIjoiaHR0cDpcL1wvb20yLmRmZS5vbmVtYXAuc2dcL2FwaVwvdjJcL3VzZXJcL3Nlc3Npb24iLCJpYXQiOjE2NzE2MzU2NzAsImV4cCI6MTY3MjA2NzY3MCwibmJmIjoxNjcxNjM1NjcwLCJqdGkiOiI0ZmY3YzlkNzg3ZjgzYzY0MDVjNmU0Njk3NDUxN2ZiNSJ9.UaadQPnBdms1Q8oEpSl97rRk-4KKIca_K1jWG1RmAao&buffer=200&addressType=HDB`
-    let response = await axios.get(endpoint);
-    console.log(response.data)
+// async function loadOneMapDataHDB(postalCode) {
+//     let coordinate = await loadOneMapDataCoordinate(postalCode)
+//     console.log(coordinate)
+//     let endpoint = `${basePrivateApiUrl}location=${coordinate}&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjk2MTYsInVzZXJfaWQiOjk2MTYsImVtYWlsIjoic2hvcHBpbmdhY2M4NEBnbWFpbC5jb20iLCJmb3JldmVyIjpmYWxzZSwiaXNzIjoiaHR0cDpcL1wvb20yLmRmZS5vbmVtYXAuc2dcL2FwaVwvdjJcL3VzZXJcL3Nlc3Npb24iLCJpYXQiOjE2NzE2MzU2NzAsImV4cCI6MTY3MjA2NzY3MCwibmJmIjoxNjcxNjM1NjcwLCJqdGkiOiI0ZmY3YzlkNzg3ZjgzYzY0MDVjNmU0Njk3NDUxN2ZiNSJ9.UaadQPnBdms1Q8oEpSl97rRk-4KKIca_K1jWG1RmAao&buffer=200&addressType=HDB`
+//     let response = await axios.get(endpoint);
+//     console.log(response.data)
 
     
-}
+// }
 
-loadOneMapDataHDB(310204)
+// loadOneMapDataHDB(310204)
