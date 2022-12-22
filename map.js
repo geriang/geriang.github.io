@@ -18,26 +18,19 @@ function loadMap() {
 // load results on result layer that is added to map
 async function loadResult(streetName, flatType, resultLayer, map) {
 
-    // Find center point of searched results on map
+    // Load coordinates and find center point of searched results on map
     let coordinates = await loadCoordinate(2022, streetName, flatType);
     let midIndex = Math.round((coordinates.length) / 2)
     let startView = coordinates[midIndex]
-    // // console.log(midIndex)
-
 
     // adding Marker Cluster Layer
     let markerClusterLayer = L.markerClusterGroup()
 
-    // importing coordinates from data_govsg.js via loadCoordinate function
-    // replace coordinates with mapstartlocation var
-    // let coordinates = await loadCoordinate(2022, streetName, flatType)
-    // console.log(coordinates.length)
-
     // importing flat price information from data_govsg.js via loadResalePrice function
     let data = await loadTransactionInfo(2022, streetName, flatType)
-    console.log(data)
-    let transactedBlock = data[0].eachBlock
-    console.log(transactedBlock)
+    // console.log(data)
+    // let transactedBlock = data[0].eachBlock
+    // console.log(transactedBlock)
     // console.log(priceInfo.length)
 
     // // importing transacted date information from data_govsg.js via loadTransactedDate function
@@ -60,7 +53,6 @@ async function loadResult(streetName, flatType, resultLayer, map) {
                         Transacted Month: ${pos, data[index].eachDate}
             `)
 
-
             .addTo(markerClusterLayer)
         markerClusterLayer.addTo(resultLayer)
 
@@ -69,7 +61,6 @@ async function loadResult(streetName, flatType, resultLayer, map) {
         animate: true,
         duration: 2
     });
-
 
 }
 // add more info such as blk, floor onto pop up
@@ -84,6 +75,6 @@ async function loadResult(streetName, flatType, resultLayer, map) {
     // markerClusterLayer.addTo(map)
 
     // }
-
+ 
 
 

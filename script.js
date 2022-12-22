@@ -14,7 +14,7 @@ async function main() {
       getPostalCode = document.querySelector('input[type="postalCode"]').value;
       let estate = await loadOneMapDataEstate(getPostalCode)
       let add = await loadOneMapDataAddress(getPostalCode);
-      
+
       // updating address and creating building/estate fields in form 
       if (getPostalCode.length == 6) {
         let oldAddress = document.getElementById("address")
@@ -39,60 +39,61 @@ async function main() {
 
     // click to generate such results
     document.querySelector("#formButton").addEventListener("click", async function () {
+      
+      // load spinner
+      const spinnerBackground = document.querySelector("#spinner-background")
+      spinnerBackground.style.display = "flex";
+      
       // retrieve value of address from form
       let inputAdd = document.querySelector('input[type="address"]').value
       let inputAddCap = inputAdd.toUpperCase()
       let inputAddCapNoBlk = inputAddCap.slice(3)
+
       // retrieve value of flat type from form
       let flatType = document.querySelector("#flat").value
+
       // converting input address to match data from data_govsg.js
       if (inputAddCapNoBlk.includes("AVENUE")) {
         let streetName = inputAddCapNoBlk.replace("AVENUE", "AVE")
 
         resultLayer.clearLayers()
         await loadResult(streetName, flatType, resultLayer, map);
-        let searchButton = document.getElementById("collapseExample")
-        // searchButton.classList.add("collapse");
-
-      
 
       } else if (inputAddCapNoBlk.includes("STREET")) {
         let streetName = inputAddCapNoBlk.replace("STREET", "ST")
-       
+
         resultLayer.clearLayers()
         await loadResult(streetName, flatType, resultLayer, map);
-        // document.querySelector(".collapse").collapse('hide')
-        // <div class="collapse" id="collapseExample">
 
       } else if (inputAddCapNoBlk.includes("LORONG")) {
 
         let streetName = inputAddCapNoBlk.replace("LORONG", "LOR")
-        
+
         resultLayer.clearLayers()
         await loadResult(streetName, flatType, resultLayer, map);
 
       } else if (inputAddCapNoBlk.includes("NORTH")) {
 
         let streetName = inputAddCapNoBlk.replace("NORTH", "NTH")
-        
+
         resultLayer.clearLayers()
         await loadResult(streetName, flatType, resultLayer, map);
 
       } else if (inputAddCapNoBlk.includes("ROAD")) {
 
         let streetName = inputAddCapNoBlk.replace("ROAD", "RD")
-        
+
         resultLayer.clearLayers()
         await loadResult(streetName, flatType, resultLayer, map);
-      
+
       } else {
 
-      let streetName = inputAddCapNoBlk
-      
-      resultLayer.clearLayers()
-      await loadResult(streetName, flatType, resultLayer, map);
-    
-    }
+        let streetName = inputAddCapNoBlk
+
+        resultLayer.clearLayers()
+        await loadResult(streetName, flatType, resultLayer, map);
+
+      }
 
       console.log("submitted")
 
@@ -101,3 +102,5 @@ async function main() {
 }
 
 main();
+
+

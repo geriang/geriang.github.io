@@ -27,7 +27,7 @@ async function loadCoordinate(year, streetName, flatType) {
 
 }
 
-// enter month, year and street name to retrieve transacted price 
+// enter month, year and street name to retrieve transacted information 
 async function loadTransactionInfo(year, streetName, flatType) {
     const response = await axios.get(`${dataGovSGBaseApiUrl}${resourceID}&q={"month":"${year}","street_name":"${streetName}","flat_type":"${flatType}"}&limit=1200`)
     const record = response.data.result.records
@@ -38,10 +38,9 @@ async function loadTransactionInfo(year, streetName, flatType) {
         let eachDate = eachRecord.month
         let eachBlock = eachRecord.block
         let eachFloor = eachRecord.storey_range
-        object = {eachPrice, eachDate, eachBlock, eachFloor}
+        object = { eachPrice, eachDate, eachBlock, eachFloor }
 
         array.push(object)
-        console.log(object)
 
     }
 
@@ -49,7 +48,7 @@ async function loadTransactionInfo(year, streetName, flatType) {
 
 }
 
-loadTransactionInfo()
+
 // // enter month, year and street name to retrieve transacted date 
 // async function loadTransactedDate(year, streetName, flatType) {
 //     let array = []
