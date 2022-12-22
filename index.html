@@ -27,7 +27,10 @@
     <div id="map"></div>
 
   </div>
- 
+
+  <!-- Map Container end -->
+
+
   <!-- Input Container start -->
   <div id="inputContainer">
     <button id="searchButton" class="btn btn-primary" type="button" data-bs-toggle="collapse"
@@ -73,26 +76,23 @@
             data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="CollapseExample">Submit</button>
         </div>
 
-         <!-- Map Container end -->
-  <!-- Load Spinner Background starts-->
-  <div id ="spinner-background">
-    <!-- Load Spinner start -->
-    <div class="spinner-border text-danger" role="status">
-      <span class="visually-hidden">Loading...</span>
-    <!-- Load Spinner end -->
-    </div>
-    <!-- Load Spinner Background end -->
-  
 
-
+        </div>
       </div>
     </div>
-  </div>
 
   </div>
 
   <!--Input Container ends  -->
-
+  
+   <!-- Load Spinner Background starts-->
+   <div id="spinner-background">
+    <!-- Load Spinner start -->
+    <div class="spinner-border text-danger" role="status">
+      <span class="visually-hidden">Loading...</span>
+      <!-- Load Spinner end -->
+    </div>
+    <!-- Load Spinner Background end -->
 
 
   <!-- Axios Script -->
@@ -112,21 +112,6 @@
   <script src="data_onemap.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <!-- <script>
-    var settings = {
-      "url": "https://developers.onemap.sg/privateapi/auth/post/getToken",
-      "data":
-      {
-        "email": "shoppingacc84@gmail.com",
-        "password": "Adrianna1!01"
-      },
-      "async": "true"
-    }
-
-    $.post(settings).done(function (response) {
-      document.write(response);
-    });
-  </script> -->
   <!-- Map script -->
   <script src="map.js"></script>
   <!-- Main script -->
@@ -141,4 +126,3 @@
 </html>
 
 <!-- Menu bar with check past transaction function, with listing creation, with searching function -->
-

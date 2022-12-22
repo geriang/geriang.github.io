@@ -59,9 +59,12 @@ async function loadResult(streetName, flatType, resultLayer, map) {
     })
     map.flyTo(startView, 15, {
         animate: true,
-        duration: 2
+        duration: 2,
+        
     });
-
+    // remove spinner after loading
+    const spinnerBackground = document.querySelector("#spinner-background")
+    spinnerBackground.style.display = "none";
 }
 // add more info such as blk, floor onto pop up
 
