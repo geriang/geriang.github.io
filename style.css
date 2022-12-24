@@ -11,12 +11,21 @@
 #inputContainer {
     position:absolute;
     height:300px;
+    width:300px ;
     top:25px;
     left:60px;
     z-index: 900;
 }
 /* z-index: 314159;  */
 
+/* .customRadio {
+    background-color: red;
+} */
+
+#formButton {
+    position:relative;
+    left:70px;
+}
 
 #spinner-background{
     background-color: black;

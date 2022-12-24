@@ -12,12 +12,13 @@ async function main() {
     // picking up postal code value from form to match One Map data then returning address and building/estate values
     document.querySelector('input[type="postalCode"]').addEventListener("keyup", async function () {
       getPostalCode = document.querySelector('input[type="postalCode"]').value;
-      let data = await loadOneMapData(getPostalCode)
-      let estate = data.eachEstate
-      let add = data.eachAdd
-
-      // updating address and creating building/estate fields in form 
       if (getPostalCode.length == 6) {
+        let data = await loadOneMapData(getPostalCode)
+        let estate = data.eachEstate
+        let add = data.eachAdd
+
+        // updating address and creating building/estate fields in form 
+        // if (getPostalCode.length == 6) {
         let oldAddress = document.getElementById("address")
         oldAddress.innerHTML = `<div id="address" class="form-floating">
     <input type="address" readonly class="form-control-plaintext" id="floatingInput" name="address" placeholder="Address" value="${add}">
@@ -28,23 +29,28 @@ async function main() {
             <label for="floatingInput">Estate/Building</label>
           </div>`
 
+        // to enable sumbit button
+        let ableToSubmit = document.querySelector("#formButton")
+        ableToSubmit.removeAttribute('disabled')
+
       }
       else {
+
         let oldAddress = document.getElementById("address")
-        oldAddress.innerHTML = `<div id="address" class="form-floating">
-        <input type="address" class="form-control" id="floatingInput" name="address" placeholder="Address">
-        <label for="floatingInput">Address</label>
-        </div>`
+        oldAddress.innerHTML = `<div id="address"></div>`
+        // // <input type="address" class="form-control" id="floatingInput" name="address" placeholder="Address">
+        // // <label for="floatingInput">Address</label>
+        // // </div>`
       }
     })
 
     // click to generate such results
     document.querySelector("#formButton").addEventListener("click", async function () {
-      
+
       // load spinner
       const spinnerBackground = document.querySelector("#spinner-background")
       spinnerBackground.style.display = "flex";
-      
+
       // retrieve value of address from form
       let inputAdd = document.querySelector('input[type="address"]').value
       let inputAddCap = inputAdd.toUpperCase()
@@ -99,6 +105,8 @@ async function main() {
       console.log("submitted")
 
     })
+
+    // document.querySelector("#formButton").addEventListener("mouseover", function
 
   }
 }
