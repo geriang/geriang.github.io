@@ -45,19 +45,22 @@
         <!-- Form -->
         <!-- <form> -->
         <div class="container">
-          <div class="form-floating my-3">
-            <input type="postalCode" class="form-control" id="floatingInput" name="postalCode" placeholder="Postal Code" required>
+          <div id ="postal" class="form-floating my-3">
+            <input type="postalCode" class="form-control" id="floatingInput" name="postalCode" placeholder="Postal Code"
+              required>
             <label for="floatingInput">Postal Code</label>
+            <div id="helpPostal" class="form-text text-danger ms-1">
+              Key in your HDB Postal Code. HDB Flats only.
+            </div>
           </div>
           <div id="address"></div>
-            <!-- <input type="address" readonly class="form-control-plaintext" id="floatingInput" name="address"
+          <!-- <input type="address" readonly class="form-control-plaintext" id="floatingInput" name="address"
               placeholder="Address" value="">
             <label for="floatingInput">Address</label> -->
-          
+
           <div class="form-floating mb-3">
             <select id="flat" class="form-select" aria-label="Default select example" required>
-              <option selected>Select HDB Flat-Type</option>
-              <option value="1 ROOM ">HDB One-Room</option>
+              <option value="1 ROOM" selected>HDB One-Room</option>
               <option value="2 ROOM">HDB Two-Room</option>
               <option value="3 ROOM">HDB Three-Room</option>
               <option value="4 ROOM">HDB Four-Room</option>
@@ -65,29 +68,30 @@
               <option value="EXECUTIVE">HDB EA/EM</option>
               <option value="MULTI-GENERATION">HDB Multi-Generation</option>
             </select>
-            <div id="helpDropdown" class="form-text ms-1">
+            <div id="helpDropdown" class="form-text text-danger ms-1">
               Select the type of HDB Flat
             </div>
           </div>
 
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-            <label class="form-check-label" for="flexRadioDefault1">
-              Entire Street
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-            <label class="form-check-label" for="flexRadioDefault2">
-              10 Nearest Blocks 
-            </label>
-            <div id="helpRadio" class="form-text ms-1">
-              Select the type of enquiry
+          <div id="radioSelection">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+              <label class="form-check-label" for="flexRadioDefault1">
+                Entire Street
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+              <label class="form-check-label" for="flexRadioDefault2">
+                Nearest Blocks
+              </label>
+              <div id="helpRadio" class="form-text text-danger ms-1">
+                Enquire base on street or surrounding blocks (max 10)
+              </div>
             </div>
           </div>
 
           <div class="container mt-4 mb-2">
-            <!-- <button type="submit" id="formButton" class="btn btn-primary" data-toggle="collapse" data-target='collapseExample'>Submit</button> -->
             <button type="submit" disabled id="formButton" class="btn btn-danger" data-bs-toggle="collapse"
               data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="CollapseExample">Submit</button>
           </div>

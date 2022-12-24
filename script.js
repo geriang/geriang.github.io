@@ -106,7 +106,43 @@ async function main() {
 
     })
 
-    // document.querySelector("#formButton").addEventListener("mouseover", function
+    // Tooltips section
+
+    // Tooltips for Postal Code
+
+    document.querySelector("#postal").addEventListener("mouseover", function () {
+      let postalToolTip = document.querySelector("#helpPostal");
+      postalToolTip.style.display = "block"
+    })
+
+    document.querySelector("#postal").addEventListener("mouseout", function () {
+      let postalToolTip = document.querySelector("#helpPostal");
+      postalToolTip.style.display = "none"
+    })
+
+    // Tooltips for Flat Type selection
+
+    document.querySelector("#flat").addEventListener("mouseover", function () {
+      let flatToolTip = document.querySelector("#helpDropdown");
+      flatToolTip.style.display = "block"
+    })
+
+    document.querySelector("#flat").addEventListener("mouseout", function () {
+      let flatToolTip = document.querySelector("#helpDropdown");
+      flatToolTip.style.display = "none"
+    })
+
+    //  Tooltip for Radio Button selection
+
+    document.querySelector("#radioSelection").addEventListener("mouseover", function () {
+      let radioToolTip = document.querySelector("#helpRadio");
+      radioToolTip.style.display = "block"
+    })
+
+    document.querySelector("#radioSelection").addEventListener("mouseout", function () {
+      let radioToolTip = document.querySelector("#helpRadio");
+      radioToolTip.style.display = "none"
+    })
 
   }
 }
