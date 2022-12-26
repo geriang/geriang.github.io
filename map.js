@@ -15,7 +15,7 @@ function loadMap() {
 
 }
 
-// load results on result layer that is added to map
+// load street type results on result layer that is added to map
 async function loadResult(streetName, flatType, resultLayer, map) {
 
     // Load coordinates and find center point of searched results on map
@@ -44,13 +44,55 @@ async function loadResult(streetName, flatType, resultLayer, map) {
     map.flyTo(startView, 15, {
         animate: true,
         duration: 2,
-        
+
     });
     // remove spinner after finish loading
     const spinnerBackground = document.querySelector("#spinner-background")
     spinnerBackground.style.display = "none";
 }
-// add more info such as blk, floor onto pop up
+
+// load nearest block resutl
+async function loadNearestBlkResult(block, streetName, flatType, resultLayer, map) {
+
+    let coordinates = await loadNearbyCoordinate(2022, block, streetName, flatType);
+
+    // Extract coordinates in array
+    // let coordinates = []
+    // let coordinateData = await loadOneMapDataHDB(postalCode);
+    // let allCoordinate = coordinateData.GeocodeInfo
+    // for (eachCoordinate of allCoordinate) {
+    //     let coordinate = [eachCoordinate.LATITUDE, eachCoordinate.LONGITUDE]
+    //     coordinates.push(coordinate)
+    // }
+    // adding Marker Cluster Layer
+    let markerClusterLayer = L.markerClusterGroup()
+
+    // importing flat price, block, floor information etc. from data_govsg.js via loadTransactionInfo function
+    let data = await loadNearbyTransactionInfo(2022, block, streetName, flatType)
+
+    coordinates.map((pos, index) => {
+        L.marker(pos)
+            .bindPopup(`Transacted Block: Block ${pos, data[index].eachBlock}<br>
+                        Transacted Floor: Level ${pos, data[index].eachFloor}<br>
+                        Transacted Price: $${pos, data[index].eachPrice}<br>
+                        Transacted Month: ${pos, data[index].eachDate}
+            `)
+
+            .addTo(markerClusterLayer)
+        markerClusterLayer.addTo(resultLayer)
+
+    })
+    map.flyTo(startView, 15, {
+        animate: true,
+        duration: 2,
+
+    });
+    // remove spinner after finish loading
+    const spinnerBackground = document.querySelector("#spinner-background")
+    spinnerBackground.style.display = "none";
+}
+
+
 
 
     // for (let i = 0; i < coordinates.length; i++){
@@ -62,6 +104,6 @@ async function loadResult(streetName, flatType, resultLayer, map) {
     // markerClusterLayer.addTo(map)
 
     // }
- 
+
 
 

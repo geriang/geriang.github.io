@@ -1,52 +1,83 @@
+#modalButton {
+    position: fixed;
+    top: 80px;
+    left: 12px;
+    z-index: 1000;
+}
 
-#mapContainer{
-    position:relative;
+#mapContainer {
+    position: relative;
 }
 
 
 #map {
-    height:100vh;
+    height: 100vh;
 }
 
 #inputContainer {
-    position:absolute;
-    height:300px;
-    width:300px ;
-    top:25px;
-    left:60px;
+    position: fixed;
+    /* height: 300px; */
+    width: 320px;
+    top: 132px;
+    left: 0px;
     z-index: 900;
 }
-/* z-index: 314159;  */
 
-/* .customRadio {
-    background-color: red;
-} */
+@media only screen and (max-height: 600px) {
+#collapseExample {
+    height:300px
+
+}
+
+}
+
+#modalButton{
+    height: 45px;
+    width: 45px;
+    opacity: 0.8;
+
+}
+#searchButton{
+    height: 45px;
+    width: 45px;
+    opacity: 0.8;
+}
+
+.searchCenter{
+    height: 23px;
+    width: 23px;
+}
+
+.modalCenter{
+    height: 21px;
+    width: 20px;
+}
 
 #formButton {
-    position:relative;
-    left:70px;
+    position: relative;
+    left: 70px;
 }
 
 #helpPostal {
-    display:none;
+    display: none;
 }
 
 #helpDropdown {
-    display:none;
+    display: none;
 }
 
 #helpRadio {
-    display:none;
+    display: none;
 }
 
-#spinner-background{
+#spinner-background {
     background-color: black;
     opacity: 0.7;
-    position:fixed;
-    width:100%;
-    height:100%;
-    top:0px;
-    left:0px; 
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
     display: none;
     justify-content: center;
     align-items: center;
@@ -54,7 +85,7 @@
 
 }
 
-.spinner-border{
+.spinner-border {
     height: 60px;
     width: 60px;
 }
