@@ -25,7 +25,7 @@ async function loadOneMapData(postalCode) {
     let eachLon = response.data.results[0].LONGITUDE;
     let eachCoordinate = [eachLat, eachLon]
 
-    object = {eachBlk, eachRoad, eachEstate, eachCoordinate}
+    object = { eachBlk, eachRoad, eachEstate, eachCoordinate }
     // console.log(object)
 
     return object
@@ -54,11 +54,11 @@ async function loadOneMapDataCoordinateUsingAddress(eachAddress) {
 
     return coordinate;
 }
-// function that requires coordinates as input to generate surrounding HDBs
+// function that requires postal code as input to generate surrounding HDBs
 async function loadOneMapDataHDB(postalCode) {
     let data = await loadOneMapData(postalCode)
     let coordinate = data.eachCoordinate
-    let endpoint = `${basePrivateApiUrl}location=${coordinate}&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjk2MTYsInVzZXJfaWQiOjk2MTYsImVtYWlsIjoic2hvcHBpbmdhY2M4NEBnbWFpbC5jb20iLCJmb3JldmVyIjpmYWxzZSwiaXNzIjoiaHR0cDpcL1wvb20yLmRmZS5vbmVtYXAuc2dcL2FwaVwvdjJcL3VzZXJcL3Nlc3Npb24iLCJpYXQiOjE2NzE2MzU2NzAsImV4cCI6MTY3MjA2NzY3MCwibmJmIjoxNjcxNjM1NjcwLCJqdGkiOiI0ZmY3YzlkNzg3ZjgzYzY0MDVjNmU0Njk3NDUxN2ZiNSJ9.UaadQPnBdms1Q8oEpSl97rRk-4KKIca_K1jWG1RmAao&buffer=300&addressType=HDB`
+    let endpoint = `${basePrivateApiUrl}location=${coordinate}&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjk2MTYsInVzZXJfaWQiOjk2MTYsImVtYWlsIjoic2hvcHBpbmdhY2M4NEBnbWFpbC5jb20iLCJmb3JldmVyIjpmYWxzZSwiaXNzIjoiaHR0cDpcL1wvb20yLmRmZS5vbmVtYXAuc2dcL2FwaVwvdjJcL3VzZXJcL3Nlc3Npb24iLCJpYXQiOjE2NzE2MzU2NzAsImV4cCI6MTY3MjA2NzY3MCwibmJmIjoxNjcxNjM1NjcwLCJqdGkiOiI0ZmY3YzlkNzg3ZjgzYzY0MDVjNmU0Njk3NDUxN2ZiNSJ9.UaadQPnBdms1Q8oEpSl97rRk-4KKIca_K1jWG1RmAao&buffer=500&addressType=HDB`
     let response = await axios.get(endpoint);
 
     return response.data

@@ -116,81 +116,52 @@ async function main() {
         }
       } else {
 
+        resultLayer.clearLayers()
         // retrieve addresses from loadOneMapDataHDB
-        let allStreet = []
-        let allBlock = []
         let response = await loadOneMapDataHDB(getPostalCode)
         let allAddress = response.GeocodeInfo
         for (eachAddress of allAddress) {
+          let block = eachAddress.BLOCK
+          console.log(block)
           let street = eachAddress.ROAD
           // converting address to match data from data_govsg.js
           if (street.includes("AVENUE")) {
-            let eachStreet = street.replace("AVENUE", "AVE")
-            allStreet.push(eachStreet)
+            let streetName = street.replace("AVENUE", "AVE")
+            loadNearestBlkResult(block, streetName, flatType, resultLayer, map)
 
           } else if (street.includes("STREET")) {
-            let eachStreet = street.replace("STREET", "ST")
-            allStreet.push(eachStreet)
+            let streetName = street.replace("STREET", "ST")
+            loadNearestBlkResult(block, streetName, flatType, resultLayer, map)
 
           } else if (street.includes("LORONG")) {
-            let eachStreet = street.replace("LORONG", "LOR")
-            allStreet.push(eachStreet)
+            let streetName = street.replace("LORONG", "LOR")
+            loadNearestBlkResult(block, streetName, flatType, resultLayer, map)
 
           } else if (street.includes("NORTH")) {
-            let eachStreet = street.replace("NORTH", "NTH")
-            allStreet.push(eachStreet)
+            let streetName = street.replace("NORTH", "NTH")
+            loadNearestBlkResult(block, streetName, flatType, resultLayer, map)
 
           } else if (street.includes("ROAD")) {
-            let eachStreet = street.replace("ROAD", "RD")
-            allStreet.push(eachStreet)
+            let streetName = street.replace("ROAD", "RD")
+            loadNearestBlkResult(block, streetName, flatType, resultLayer, map)
 
           } else {
-            let eachStreet = street
-            allStreet.push(eachStreet)
+            let streetName = street
+            loadNearestBlkResult(block, streetName, flatType, resultLayer, map)
 
           }
-          // extract out blocks 
-          let eachBlock = eachAddress.BLOCK
-          allBlock.push(eachBlock)
         }
 
+        let data = await loadOneMapData(getPostalCode)
+        let coordinate = data.eachCoordinate
+        map.flyTo(coordinate, 17, {
+          animate: true,
+          duration: 2,
+        })
 
-        console.log(allStreet)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // let coordinates = []
-        // let data = await loadOneMapDataHDB(getPostalCode);
-        // let allCoordinate = data.GeocodeInfo
-        // for (eachCoordinate of allCoordinate) {
-        //     let coordinate = [eachCoordinate.LATITUDE, eachCoordinate.LONGITUDE]
-        //     coordinates.push(coordinate)
-        // console.log(coordinates)
-
-        // }
-
-        // let allStreetNames = []
-        // let nearestBlocks = await loadOneMapDataHDB(getPostalCode)
-        // let allBlocks = nearestBlocks.GeocodeInfo
-        // for (eachBlock of allBlocks){
-        //   let eachStreet = eachBlock.ROAD 
-        //   allStreetNames.push(eachStreet)
-
-        //   console.log(allStreetNames)
-        // }  
-
-
+        // remove spinner after finish loading
+        const spinnerBackground = document.querySelector("#spinner-background")
+        spinnerBackground.style.display = "none";
         console.log("submitted")
       }
 
@@ -239,6 +210,97 @@ async function main() {
   }
 }
 
+
 main();
 
 
+// // retrieve addresses from loadOneMapDataHDB
+// let object = {}
+// let array = []
+// let response = await loadOneMapDataHDB(getPostalCode)
+// let allAddress = response.GeocodeInfo
+// for (eachAddress of allAddress) {
+//   let block = eachAddress.BLOCK
+//   let street = eachAddress.ROAD
+//   // converting address to match data from data_govsg.js
+//   if (street.includes("AVENUE")) {
+//     let eachStreet = street.replace("AVENUE", "AVE")
+//     object = { block, eachStreet, flatType }
+//     array.push(object)
+
+//   } else if (street.includes("STREET")) {
+//     let eachStreet = street.replace("STREET", "ST")
+//     object = { block, eachStreet, flatType }
+//     array.push(object)
+
+//   } else if (street.includes("LORONG")) {
+//     let eachStreet = street.replace("LORONG", "LOR")
+//     object = { block, eachStreet, flatType }
+//     array.push(object)
+
+//   } else if (street.includes("NORTH")) {
+//     let eachStreet = street.replace("NORTH", "NTH")
+//     object = { block, eachStreet, flatType }
+//     array.push(object)
+
+//   } else if (street.includes("ROAD")) {
+//     let eachStreet = street.replace("ROAD", "RD")
+//     object = { block, eachStreet, flatType }
+//     array.push(object)
+
+//   } else {
+//     let eachStreet = street
+//     object = { block, eachStreet, flatType }
+//     array.push(object)
+
+//   }
+// }
+// console.log(array)
+// await loadNearestBlkResult(755, "YISHUN ST 72", "5 ROOM", resultLayer, map)
+
+// console.log("submitted")
+// }
+
+
+
+// resultLayer.clearLayers()
+//         // retrieve addresses from loadOneMapDataHDB
+//         let response = await loadOneMapDataHDB(getPostalCode)
+//         let allAddress = response.GeocodeInfo
+//         for (eachAddress of allAddress) {
+//           let block = eachAddress.BLOCK
+//           let street = eachAddress.ROAD
+//           // converting address to match data from data_govsg.js
+//           if (street.includes("AVENUE")) {
+//             let streetName = street.replace("AVENUE", "AVE")
+//             loadNearestBlkResult(block, streetName, flatType, resultLayer, map)
+
+//           } else if (street.includes("STREET")) {
+//             let streetName = street.replace("STREET", "ST")
+//             loadNearestBlkResult(block, streetName, flatType, resultLayer, map)
+
+//           } else if (street.includes("LORONG")) {
+//             let streetName = street.replace("LORONG", "LOR")
+//             loadNearestBlkResult(block, streetName, flatType, resultLayer, map)
+
+//           } else if (street.includes("NORTH")) {
+//             let streetName = street.replace("NORTH", "NTH")
+//             loadNearestBlkResult(block, streetName, flatType, resultLayer, map)
+
+//           } else if (street.includes("ROAD")) {
+//             let streetName = street.replace("ROAD", "RD")
+//             loadNearestBlkResult(block, streetName, flatType, resultLayer, map)
+
+//           } else {
+//             let streetName = street
+//             loadNearestBlkResult(block, streetName, flatType, resultLayer, map)
+
+//           }
+//         }
+
+
+//         // remove spinner after finish loading
+//         const spinnerBackground = document.querySelector("#spinner-background")
+//         spinnerBackground.style.display = "none";
+//         console.log("submitted")
+//       }

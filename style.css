@@ -24,31 +24,31 @@
 }
 
 @media only screen and (max-height: 600px) {
-#collapseExample {
-    height:300px
+    #collapseExample {
+        height: 300px
+    }
 
 }
 
-}
-
-#modalButton{
+#modalButton {
     height: 45px;
     width: 45px;
     opacity: 0.8;
 
 }
-#searchButton{
+
+#searchButton {
     height: 45px;
     width: 45px;
     opacity: 0.8;
 }
 
-.searchCenter{
+.searchCenter {
     height: 23px;
     width: 23px;
 }
 
-.modalCenter{
+.modalCenter {
     height: 21px;
     width: 20px;
 }

@@ -17,6 +17,7 @@ async function loadCoordinate(year, streetName, flatType) {
     }
 
     return array
+    
 
 }
 
@@ -77,5 +78,6 @@ async function loadNearbyTransactionInfo(year, block, streetName, flatType) {
     return array
 
 }
+
 
 
