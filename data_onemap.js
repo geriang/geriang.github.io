@@ -1,4 +1,5 @@
 const baseApiUrl = "https://developers.onemap.sg/commonapi/search?searchVal=";
+const oneMapToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjk2MTYsInVzZXJfaWQiOjk2MTYsImVtYWlsIjoic2hvcHBpbmdhY2M4NEBnbWFpbC5jb20iLCJmb3JldmVyIjpmYWxzZSwiaXNzIjoiaHR0cDpcL1wvb20yLmRmZS5vbmVtYXAuc2dcL2FwaVwvdjJcL3VzZXJcL3Nlc3Npb24iLCJpYXQiOjE2NzIxMTM3NDksImV4cCI6MTY3MjU0NTc0OSwibmJmIjoxNjcyMTEzNzQ5LCJqdGkiOiJkNTQzN2Y2NzgxODhmMjUzNjU2MzIyMTRiODdjNzRjMyJ9.PQETlXwViTnTcLpYj1IffMXx8fHTzyg_1IlM6-qatmk"
 
 // const getOneMapData = `${baseApiUrl}${getPostalCode}&returnGeom=Y&getAddrDetails=Y&pageNum=1`;
 // https://developers.onemap.sg/commonapi/search?searchVal=159967&returnGeom=Y&getAddrDetails=Y&pageNum=1`
@@ -58,7 +59,7 @@ async function loadOneMapDataCoordinateUsingAddress(eachAddress) {
 async function loadOneMapDataHDB(postalCode) {
     let data = await loadOneMapData(postalCode)
     let coordinate = data.eachCoordinate
-    let endpoint = `${basePrivateApiUrl}location=${coordinate}&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjk2MTYsInVzZXJfaWQiOjk2MTYsImVtYWlsIjoic2hvcHBpbmdhY2M4NEBnbWFpbC5jb20iLCJmb3JldmVyIjpmYWxzZSwiaXNzIjoiaHR0cDpcL1wvb20yLmRmZS5vbmVtYXAuc2dcL2FwaVwvdjJcL3VzZXJcL3Nlc3Npb24iLCJpYXQiOjE2NzE2MzU2NzAsImV4cCI6MTY3MjA2NzY3MCwibmJmIjoxNjcxNjM1NjcwLCJqdGkiOiI0ZmY3YzlkNzg3ZjgzYzY0MDVjNmU0Njk3NDUxN2ZiNSJ9.UaadQPnBdms1Q8oEpSl97rRk-4KKIca_K1jWG1RmAao&buffer=500&addressType=HDB`
+    let endpoint = `${basePrivateApiUrl}location=${coordinate}&token=${oneMapToken}&buffer=500&addressType=HDB`
     let response = await axios.get(endpoint);
 
     return response.data
