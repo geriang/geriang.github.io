@@ -67,53 +67,35 @@ async function main() {
 
       if (document.getElementById("flexRadioDefault1").checked) {
 
+
         // retrieve value of address from form
         let inputAdd = document.querySelector('input[type="address"]').value
-        // let inputAddCap = inputAdd.toUpperCase()
-        let inputAddCapNoBlk = inputAdd.slice(3)
+        let inputAddCapNoBlk = inputAdd.slice(4)
+          // https://stackoverflow.com/questions/15604140/replace-multiple-strings-with-multiple-other-strings
 
-        // converting input address to match data from data_govsg.js
-        if (inputAddCapNoBlk.includes("AVENUE")) {
-          let streetName = inputAddCapNoBlk.replace("AVENUE", "AVE")
+        var mapObj = {
+        "AVENUE":"AVE",
+        "STREET":"ST",
+        "LORONG":"LOR",
+        "NORTH":"NTH",
+        "ROAD":"RD",
+        "PLACE":"PL",
+        "JALAN":"JLN",
+        "BUKIT":"BT",
+        "CLOSE":"CL",
+        "PARK":"PK",
+        "DRIVE":"DR",
 
-          resultLayer.clearLayers()
-          await loadResult(streetName, flatType, resultLayer, map);
+        };
 
-        } else if (inputAddCapNoBlk.includes("STREET")) {
-          let streetName = inputAddCapNoBlk.replace("STREET", "ST")
+        streetName = inputAddCapNoBlk.replace(/AVENUE|STREET|LORONG|NORTH|ROAD|PLACE|JALAN|BUKIT|CLOSE|PARK|DRIVE/gi, function(matched){
+        return mapObj[matched];
+        })
 
-          resultLayer.clearLayers()
-          await loadResult(streetName, flatType, resultLayer, map);
-
-        } else if (inputAddCapNoBlk.includes("LORONG")) {
-
-          let streetName = inputAddCapNoBlk.replace("LORONG", "LOR")
-
-          resultLayer.clearLayers()
-          await loadResult(streetName, flatType, resultLayer, map);
-
-        } else if (inputAddCapNoBlk.includes("NORTH")) {
-
-          let streetName = inputAddCapNoBlk.replace("NORTH", "NTH")
-
-          resultLayer.clearLayers()
-          await loadResult(streetName, flatType, resultLayer, map);
-
-        } else if (inputAddCapNoBlk.includes("ROAD")) {
-
-          let streetName = inputAddCapNoBlk.replace("ROAD", "RD")
-
-          resultLayer.clearLayers()
-          await loadResult(streetName, flatType, resultLayer, map);
-
-        } else {
-
-          let streetName = inputAddCapNoBlk
-
-          resultLayer.clearLayers()
-          await loadResult(streetName, flatType, resultLayer, map);
-
-        }
+        console.log(streetName)
+        resultLayer.clearLayers()
+        await loadResult(streetName, flatType, resultLayer, map);
+ 
       } else {
 
         resultLayer.clearLayers()
@@ -125,32 +107,28 @@ async function main() {
           console.log(block)
           let street = eachAddress.ROAD
           // converting address to match data from data_govsg.js
-          if (street.includes("AVENUE")) {
-            let streetName = street.replace("AVENUE", "AVE")
-            loadNearestBlkResult(block, streetName, flatType, resultLayer, map)
-
-          } else if (street.includes("STREET")) {
-            let streetName = street.replace("STREET", "ST")
-            loadNearestBlkResult(block, streetName, flatType, resultLayer, map)
-
-          } else if (street.includes("LORONG")) {
-            let streetName = street.replace("LORONG", "LOR")
-            loadNearestBlkResult(block, streetName, flatType, resultLayer, map)
-
-          } else if (street.includes("NORTH")) {
-            let streetName = street.replace("NORTH", "NTH")
-            loadNearestBlkResult(block, streetName, flatType, resultLayer, map)
-
-          } else if (street.includes("ROAD")) {
-            let streetName = street.replace("ROAD", "RD")
-            loadNearestBlkResult(block, streetName, flatType, resultLayer, map)
-
-          } else {
-            let streetName = street
+          var mapObj = {
+            "AVENUE":"AVE",
+            "STREET":"ST",
+            "LORONG":"LOR",
+            "NORTH":"NTH",
+            "ROAD":"RD",
+            "PLACE":"PL",
+            "JALAN":"JLN",
+            "BUKIT":"BT",
+            "CLOSE":"CL",
+            "PARK":"PK",
+            "DRIVE":"DR",
+            };
+    
+            streetName = street.replace(/AVENUE|STREET|LORONG|NORTH|ROAD|PLACE|JALAN|BUKIT|CLOSE|PARK|DRIVE/gi, function(matched){
+            return mapObj[matched];
+            })
+  
+            console.log(streetName)
             loadNearestBlkResult(block, streetName, flatType, resultLayer, map)
 
           }
-        }
 
         let data = await loadOneMapData(getPostalCode)
         let coordinate = data.eachCoordinate
@@ -304,3 +282,58 @@ main();
 //         spinnerBackground.style.display = "none";
 //         console.log("submitted")
 //       }
+
+// const conditions = ["AVENUE", "STREET", "LORONG", "NORTH", "ROAD"];
+// if (conditions.some(el => inputAddCapNoBlk.includes(el))){
+
+//   var mapObj = {
+//     "AVENUE":"AVE",
+//     "STREET":"ST",
+//     "LORONG":"LOR",
+//     "NORTH":"NTH",
+//     'R0AD':'RD',
+//   };
+
+//     streetName = inputAddCapNoBlk.replace(/"AVENUE|STREET|LORONG|NORTH|ROAD/gi, function(matched){
+//       return mapObj[matched];
+//     })
+
+//     console.log(inputAddCapNoBlk)
+//       resultLayer.clearLayers()
+//   await loadResult(streetName, flatType, resultLayer, map);
+ 
+//  };
+
+
+//  if (inputAddCapNoBlk.includes("AVENUE")) {
+//   let streetName = inputAddCapNoBlk.replace("AVENUE", "AVE")
+
+//   resultLayer.clearLayers()
+//   await loadResult(streetName, flatType, resultLayer, map);
+
+// } else if (inputAddCapNoBlk.includes("STREET")) {
+//   let streetName = inputAddCapNoBlk.replace("STREET", "ST")
+
+//   resultLayer.clearLayers()
+//   await loadResult(streetName, flatType, resultLayer, map);
+
+// } else if (inputAddCapNoBlk.includes("LORONG")) {
+
+//   let streetName = inputAddCapNoBlk.replace("LORONG", "LOR")
+
+//   resultLayer.clearLayers()
+//   await loadResult(streetName, flatType, resultLayer, map);
+
+// } else if (inputAddCapNoBlk.includes("NORTH")) {
+
+//   let streetName = inputAddCapNoBlk.replace("NORTH", "NTH")
+
+//   resultLayer.clearLayers()
+//   await loadResult(streetName, flatType, resultLayer, map);
+
+// } else if (inputAddCapNoBlk.includes("ROAD")) {
+
+//   let streetName = inputAddCapNoBlk.replace("ROAD", "RD")
+
+//   resultLayer.clearLayers()
+//   await loadResult(streetName, flatType, resultLayer, map);
