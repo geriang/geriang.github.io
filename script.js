@@ -67,13 +67,13 @@ async function main() {
 
       if (document.getElementById("flexRadioDefault1").checked) {
 
-
         // retrieve value of address from form
         let inputAdd = document.querySelector('input[type="address"]').value
-        let inputAddCapNoBlk = inputAdd.slice(4)
-          // https://stackoverflow.com/questions/15604140/replace-multiple-strings-with-multiple-other-strings
+        // https://stackoverflow.com/questions/4993764/how-to-remove-numbers-from-a-string
+        let inputAddCapNoBlk = inputAdd.replace(/^\d+/,'');
+        // https://stackoverflow.com/questions/15604140/replace-multiple-strings-with-multiple-other-strings
 
-        var mapObj = {
+        var convertAdd = {
         "AVENUE":"AVE",
         "STREET":"ST",
         "LORONG":"LOR",
@@ -85,14 +85,19 @@ async function main() {
         "CLOSE":"CL",
         "PARK":"PK",
         "DRIVE":"DR",
+        "TANJONG":"TG",
+        "UPPER":"UPP",
+        "CRESCENT":"CRES",
+        "CENTRAL":"CTRL",
+        "COMMONWEALTH":"C'WEALTH",
 
         };
 
-        streetName = inputAddCapNoBlk.replace(/AVENUE|STREET|LORONG|NORTH|ROAD|PLACE|JALAN|BUKIT|CLOSE|PARK|DRIVE/gi, function(matched){
-        return mapObj[matched];
+        streetName = inputAddCapNoBlk.replace(/AVENUE|STREET|LORONG|NORTH|ROAD|PLACE|JALAN|BUKIT|CLOSE|PARK|DRIVE|TANJONG|UPPER|CRESCENT|CENTRAL|COMMONWEALTH/gi, function(matched){
+        return convertAdd[matched];
         })
 
-        console.log(streetName)
+        // console.log(streetName)
         resultLayer.clearLayers()
         await loadResult(streetName, flatType, resultLayer, map);
  
@@ -104,28 +109,34 @@ async function main() {
         let allAddress = response.GeocodeInfo
         for (eachAddress of allAddress) {
           let block = eachAddress.BLOCK
-          console.log(block)
+          // console.log(block)
           let street = eachAddress.ROAD
           // converting address to match data from data_govsg.js
-          var mapObj = {
-            "AVENUE":"AVE",
-            "STREET":"ST",
-            "LORONG":"LOR",
-            "NORTH":"NTH",
-            "ROAD":"RD",
-            "PLACE":"PL",
-            "JALAN":"JLN",
-            "BUKIT":"BT",
-            "CLOSE":"CL",
-            "PARK":"PK",
-            "DRIVE":"DR",
-            };
-    
-            streetName = street.replace(/AVENUE|STREET|LORONG|NORTH|ROAD|PLACE|JALAN|BUKIT|CLOSE|PARK|DRIVE/gi, function(matched){
-            return mapObj[matched];
-            })
+          
+        var convertAdd = {
+          "AVENUE":"AVE",
+          "STREET":"ST",
+          "LORONG":"LOR",
+          "NORTH":"NTH",
+          "ROAD":"RD",
+          "PLACE":"PL",
+          "JALAN":"JLN",
+          "BUKIT":"BT",
+          "CLOSE":"CL",
+          "PARK":"PK",
+          "DRIVE":"DR",
+          "TANJONG":"TG",
+          "UPPER":"UPP",
+          "CRESCENT":"CRES",
+          "CENTRAL":"CTRL",
+          "COMMONWEALTH":"C'WEALTH",
+          };
   
-            console.log(streetName)
+          streetName = street.replace(/AVENUE|STREET|LORONG|NORTH|ROAD|PLACE|JALAN|BUKIT|CLOSE|PARK|DRIVE|TANJONG|UPPER|CRESCENT|CENTRAL|COMMONWEALTH/gi, function(matched){
+          return convertAdd[matched];
+          })
+  
+            // console.log(streetName)
             loadNearestBlkResult(block, streetName, flatType, resultLayer, map)
 
           }
@@ -140,9 +151,8 @@ async function main() {
         // remove spinner after finish loading
         const spinnerBackground = document.querySelector("#spinner-background")
         spinnerBackground.style.display = "none";
-        console.log("submitted")
+        // console.log("submitted")
       }
-
 
 
     })
