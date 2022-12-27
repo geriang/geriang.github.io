@@ -33,16 +33,6 @@ async function loadOneMapData(postalCode) {
 
 }
 
-// async function loadOneMapDataCoordinate(postalCode) {
-
-//     let endpoint = `${baseApiUrl}${postalCode}&returnGeom=Y&getAddrDetails=Y&pageNum=1`;
-//     let response = await axios.get(endpoint);
-//     let eachLat = response.data.results[0].LATITUDE;
-//     let eachLon = response.data.results[0].LONGITUDE;
-//     let coordinate = [eachLat, eachLon];
-
-//     return coordinate;
-// }
 
 // function that requires an address as input to generate coordinates
 async function loadOneMapDataCoordinateUsingAddress(eachAddress) {

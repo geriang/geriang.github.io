@@ -6,9 +6,10 @@ async function main() {
   // load modal pop up
   window.addEventListener("load", function () {
     // https://stackoverflow.com/users/171456/zim
-    const myModal = new bootstrap.Modal(document.getElementById("exampleModal"), {})
-    myModal.toggle()
-  })
+
+    const myModal = new bootstrap.Modal(document.getElementById("exampleModal"), {});
+    myModal.toggle();
+  });
 
   function init() {
     let map = loadMap();
@@ -154,13 +155,11 @@ async function main() {
         // console.log("submitted")
       }
 
-
     })
 
     // Tooltips section
 
     // Tooltips for Postal Code
-
     document.querySelector("#postal").addEventListener("mouseover", function () {
       let postalToolTip = document.querySelector("#helpPostal");
       postalToolTip.style.display = "block"
@@ -172,7 +171,6 @@ async function main() {
     })
 
     // Tooltips for Flat Type selection
-
     document.querySelector("#flat").addEventListener("mouseover", function () {
       let flatToolTip = document.querySelector("#helpDropdown");
       flatToolTip.style.display = "block"
@@ -184,7 +182,6 @@ async function main() {
     })
 
     //  Tooltip for Radio Button selection
-
     document.querySelector("#radioSelection").addEventListener("mouseover", function () {
       let radioToolTip = document.querySelector("#helpRadio");
       radioToolTip.style.display = "block"
@@ -199,7 +196,10 @@ async function main() {
 }
 
 
+
 main();
+
+
 
 
 // // retrieve addresses from loadOneMapDataHDB
