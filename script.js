@@ -165,6 +165,25 @@ async function main() {
             animate: true,
             duration: 2,
             })
+
+            let showResultModal = document.getElementById("resultModal")
+            showResultModal.innerHTML = `
+            <div class="modal-dialog modal-sm modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-center">${count} HDB Resale Transactions Found</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p class="center">Each house icon represents a transaction. Click on it to see the transaction details.</p>
+                </div>
+              </div>
+            </div>
+          </div> `
+
+            const resultModal = new bootstrap.Modal(document.getElementById("resultModal"), {})
+            resultModal.toggle()
+
           }
           
       }
