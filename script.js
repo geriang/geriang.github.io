@@ -19,6 +19,9 @@ async function main() {
     const resultLayer = L.layerGroup();
     resultLayer.addTo(map);
 
+
+
+
     // picking up postal code value from form to match One Map data then returning address and building/estate values
     document.querySelector('input[type="postalCode"]').addEventListener("keyup", async function () {
       getPostalCode = document.querySelector('input[type="postalCode"]').value;
@@ -49,9 +52,10 @@ async function main() {
 
         let oldAddress = document.getElementById("address")
         oldAddress.innerHTML = `<div id="address"></div>`
-        // // <input type="address" class="form-control" id="floatingInput" name="address" placeholder="Address">
-        // // <label for="floatingInput">Address</label>
-        // // </div>`
+        
+        let ableToSubmit = document.querySelector("#formButton")
+        ableToSubmit.setAttribute('disabled', '');
+
       }
     })
 
