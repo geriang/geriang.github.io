@@ -82,31 +82,16 @@ async function loadResult(streetName, flatType, resultLayer, map) {
 
         // load coordinates for search result according to 500m radius
         let coordinates = await loadNearbyCoordinate(2022, block, streetName, flatType);
-
-        if (coordinates.length  == 0){
-
-            // load no transactions found
-            const noModal = new bootstrap.Modal(document.getElementById("noResultModal"), {})
-            noModal.toggle()
-
-            function stopLoading() {
-                window.stop();
-              }
-              
-            stopLoading()
-
-            return
+        globalMarkerCount.push(coordinates)
     
-        }else{
+            // adding Marker Cluster Layer
+            let markerClusterLayer = L.markerClusterGroup();
     
-        // adding Marker Cluster Layer
-        let markerClusterLayer = L.markerClusterGroup();
-    
-        // importing flat price, block, floor information etc. from data_govsg.js via loadTransactionInfo function
-        let data = await loadNearbyTransactionInfo(2022, block, streetName, flatType);
+            // importing flat price, block, floor information etc. from data_govsg.js via loadNearbyTransactionInfo function
+            let data = await loadNearbyTransactionInfo(2022, block, streetName, flatType);
         
-        // Map coordinates and transaction infomation
-        coordinates.map((pos, index) => {
+            // Map coordinates and transaction infomation
+            coordinates.map((pos, index) => {
             L.marker((pos),{icon: houseIcon})
                 .bindPopup(`Transacted Block: Block ${pos, data[index].eachBlock}<br>
                             Transacted Floor: Level ${pos, data[index].eachFloor}<br>
@@ -115,22 +100,11 @@ async function loadResult(streetName, flatType, resultLayer, map) {
                 `)
                 .addTo(markerClusterLayer);
             markerClusterLayer.addTo(resultLayer);
-        });
+            });
 
     };
-};
 
 
-
-    // for (let i = 0; i < coordinates.length; i++){
-
-    //     L.marker(coordinates[i])
-    //     .bindPopup(`${priceInfo[i]}`)
-
-    //     .addTo(markerClusterLayer)
-    // markerClusterLayer.addTo(map)
-
-    // }
 
 
 

@@ -1,7 +1,8 @@
+let globalMarkerCount = []
+
 async function main() {
 
   init()
-
 
   // load modal pop up
   window.addEventListener("load", function () {
@@ -98,11 +99,11 @@ async function main() {
         return convertAdd[matched];
         })
 
-        // console.log(streetName)
         resultLayer.clearLayers()
         await loadResult(streetName, flatType, resultLayer, map);
  
       } else {
+        globalMarkerCount = []
 
         resultLayer.clearLayers()
         // retrieve addresses from loadOneMapDataHDB
@@ -110,7 +111,6 @@ async function main() {
         let allAddress = response.GeocodeInfo
         for (eachAddress of allAddress) {
           let block = eachAddress.BLOCK
-          // console.log(block)
           let street = eachAddress.ROAD
           // converting address to match data from data_govsg.js
           
@@ -137,25 +137,40 @@ async function main() {
           return convertAdd[matched];
           })
   
-            // console.log(streetName)
-            loadNearestBlkResult(block, streetName, flatType, resultLayer, map)
+          await loadNearestBlkResult(block, streetName, flatType, resultLayer, map)
 
           }
+          
+          // remove spinner after finish loading
+          const spinnerBackground = document.querySelector("#spinner-background")
+          spinnerBackground.style.display = "none";
 
-        let data = await loadOneMapData(getPostalCode)
-        let coordinate = data.eachCoordinate
-        map.flyTo(coordinate, 17, {
-          animate: true,
-          duration: 2,
-        })
+          // count the number of markers generated
+          let count = 0
+          for (let i = 0; i < globalMarkerCount.length; i++) {
+            count += globalMarkerCount[i].length;
+          }
+          console.log(count)
+          if (count == 0){
 
-        // remove spinner after finish loading
-        const spinnerBackground = document.querySelector("#spinner-background")
-        spinnerBackground.style.display = "none";
-        // console.log("submitted")
+             // load no transactions found
+            const noModal = new bootstrap.Modal(document.getElementById("noResultModal"), {})
+            noModal.toggle()
+
+          }else{
+
+            let data = await loadOneMapData(getPostalCode)
+            let coordinate = data.eachCoordinate
+            map.flyTo(coordinate, 17, {
+            animate: true,
+            duration: 2,
+            })
+          }
+          
       }
+        globalMarkerCount = null
 
-    })
+    });
 
     // Tooltips section
 
@@ -195,155 +210,6 @@ async function main() {
   }
 }
 
-
-
 main();
 
 
-
-
-// // retrieve addresses from loadOneMapDataHDB
-// let object = {}
-// let array = []
-// let response = await loadOneMapDataHDB(getPostalCode)
-// let allAddress = response.GeocodeInfo
-// for (eachAddress of allAddress) {
-//   let block = eachAddress.BLOCK
-//   let street = eachAddress.ROAD
-//   // converting address to match data from data_govsg.js
-//   if (street.includes("AVENUE")) {
-//     let eachStreet = street.replace("AVENUE", "AVE")
-//     object = { block, eachStreet, flatType }
-//     array.push(object)
-
-//   } else if (street.includes("STREET")) {
-//     let eachStreet = street.replace("STREET", "ST")
-//     object = { block, eachStreet, flatType }
-//     array.push(object)
-
-//   } else if (street.includes("LORONG")) {
-//     let eachStreet = street.replace("LORONG", "LOR")
-//     object = { block, eachStreet, flatType }
-//     array.push(object)
-
-//   } else if (street.includes("NORTH")) {
-//     let eachStreet = street.replace("NORTH", "NTH")
-//     object = { block, eachStreet, flatType }
-//     array.push(object)
-
-//   } else if (street.includes("ROAD")) {
-//     let eachStreet = street.replace("ROAD", "RD")
-//     object = { block, eachStreet, flatType }
-//     array.push(object)
-
-//   } else {
-//     let eachStreet = street
-//     object = { block, eachStreet, flatType }
-//     array.push(object)
-
-//   }
-// }
-// console.log(array)
-// await loadNearestBlkResult(755, "YISHUN ST 72", "5 ROOM", resultLayer, map)
-
-// console.log("submitted")
-// }
-
-
-
-// resultLayer.clearLayers()
-//         // retrieve addresses from loadOneMapDataHDB
-//         let response = await loadOneMapDataHDB(getPostalCode)
-//         let allAddress = response.GeocodeInfo
-//         for (eachAddress of allAddress) {
-//           let block = eachAddress.BLOCK
-//           let street = eachAddress.ROAD
-//           // converting address to match data from data_govsg.js
-//           if (street.includes("AVENUE")) {
-//             let streetName = street.replace("AVENUE", "AVE")
-//             loadNearestBlkResult(block, streetName, flatType, resultLayer, map)
-
-//           } else if (street.includes("STREET")) {
-//             let streetName = street.replace("STREET", "ST")
-//             loadNearestBlkResult(block, streetName, flatType, resultLayer, map)
-
-//           } else if (street.includes("LORONG")) {
-//             let streetName = street.replace("LORONG", "LOR")
-//             loadNearestBlkResult(block, streetName, flatType, resultLayer, map)
-
-//           } else if (street.includes("NORTH")) {
-//             let streetName = street.replace("NORTH", "NTH")
-//             loadNearestBlkResult(block, streetName, flatType, resultLayer, map)
-
-//           } else if (street.includes("ROAD")) {
-//             let streetName = street.replace("ROAD", "RD")
-//             loadNearestBlkResult(block, streetName, flatType, resultLayer, map)
-
-//           } else {
-//             let streetName = street
-//             loadNearestBlkResult(block, streetName, flatType, resultLayer, map)
-
-//           }
-//         }
-
-
-//         // remove spinner after finish loading
-//         const spinnerBackground = document.querySelector("#spinner-background")
-//         spinnerBackground.style.display = "none";
-//         console.log("submitted")
-//       }
-
-// const conditions = ["AVENUE", "STREET", "LORONG", "NORTH", "ROAD"];
-// if (conditions.some(el => inputAddCapNoBlk.includes(el))){
-
-//   var mapObj = {
-//     "AVENUE":"AVE",
-//     "STREET":"ST",
-//     "LORONG":"LOR",
-//     "NORTH":"NTH",
-//     'R0AD':'RD',
-//   };
-
-//     streetName = inputAddCapNoBlk.replace(/"AVENUE|STREET|LORONG|NORTH|ROAD/gi, function(matched){
-//       return mapObj[matched];
-//     })
-
-//     console.log(inputAddCapNoBlk)
-//       resultLayer.clearLayers()
-//   await loadResult(streetName, flatType, resultLayer, map);
- 
-//  };
-
-
-//  if (inputAddCapNoBlk.includes("AVENUE")) {
-//   let streetName = inputAddCapNoBlk.replace("AVENUE", "AVE")
-
-//   resultLayer.clearLayers()
-//   await loadResult(streetName, flatType, resultLayer, map);
-
-// } else if (inputAddCapNoBlk.includes("STREET")) {
-//   let streetName = inputAddCapNoBlk.replace("STREET", "ST")
-
-//   resultLayer.clearLayers()
-//   await loadResult(streetName, flatType, resultLayer, map);
-
-// } else if (inputAddCapNoBlk.includes("LORONG")) {
-
-//   let streetName = inputAddCapNoBlk.replace("LORONG", "LOR")
-
-//   resultLayer.clearLayers()
-//   await loadResult(streetName, flatType, resultLayer, map);
-
-// } else if (inputAddCapNoBlk.includes("NORTH")) {
-
-//   let streetName = inputAddCapNoBlk.replace("NORTH", "NTH")
-
-//   resultLayer.clearLayers()
-//   await loadResult(streetName, flatType, resultLayer, map);
-
-// } else if (inputAddCapNoBlk.includes("ROAD")) {
-
-//   let streetName = inputAddCapNoBlk.replace("ROAD", "RD")
-
-//   resultLayer.clearLayers()
-//   await loadResult(streetName, flatType, resultLayer, map);

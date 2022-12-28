@@ -19,7 +19,7 @@ async function loadTransactionInfo(year, streetName, flatType) {
         let eachAddress = `${eachRecord.block}+${eachRecord.street_name}`;
         let coordinate = await loadOneMapDataCoordinateUsingAddress(eachAddress);
         object = { eachPrice, eachDate, eachBlock, eachFloor, coordinate };
-        
+
         coordinateArray.push(coordinate);
         array.push(object);
     };
