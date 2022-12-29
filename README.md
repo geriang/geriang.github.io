@@ -86,10 +86,14 @@ Testing instructions : TS
 3.US: I want to start searching for transacted HDB Flats near my home.
   TS: Click on the search icon (depicted by a magnifying glass)
   
-4.US: I want to key in my address conveniently using my postal code.
+4.US: I am not sure what are the displayed fields are for.
+  TS: Mouseover (desktop) or tap (mobile) the fields to display the purpose of the fields
+  
+5.US: I want to key in my address conveniently using my postal code.
   TS: Type in the full 6 digit postal code in the Postal Code field
   
-5.US: I want to find the transacted flats that are similar to my current flat type.
+6.US: I want to find the transacted flats that are similar to my current flat type.
+  TS: Click on the drop down field to select the desired flat-type
 
 4.US: I want to start searching where and what are the HDB flats that are sold along the street of my home address
   TS: 
