@@ -47,16 +47,17 @@ Major features of the application includes:
 - A modal pop-up appears when the search is completed, showing the search result which either reflects the number of transactions found or no transaction was found (Bootstrap inbuilt Modal feature & Javascript DOM - getElementById & InnerHTML)
 
 
-
-<h3>USER STORIES</h3>
-If you wish to present the features list in a form more suitable for software development, you can write them as user stories instead. 
-A basic user story consists of: 
- The role, or type of the user
-A statement describing what the user wishes to a
-A statement describing the intent of the user
-Explain what features in your application can meet this particular user story.
-
 <h3>TECHNOLOGIES USED</h3>
+
+The project is written in HTML, CSS, and Javascript languages. 
+The following libraries were used:
+Bootstrap - https://getbootstrap.com/ for pre-built HTML, CSS & Javascript web features such as forms, modal, loading spinner and buttons
+Leaflet - https://leafletjs.com/ for pre-built Map features
+
+Axios - https://axios-http.com/docs/intro for making async API calls and requests.
+used in data_govsg.js & data_onemap.js
+
+
 
 Provide an overview of the languages, frameworks, libraries and any other tools that you have used to produce the project. Be sure to provide a short description of where in the project the technology is used, and a URL to its Github repository. 
 
