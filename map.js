@@ -29,6 +29,9 @@ popupAnchor:  [0, -30] // point from which the popup should open relative to the
 // load street type results on result layer that is added to map
 async function loadResult(streetName, flatType, resultLayer, map) {
 
+    // reset globaMarkerArray
+    globalMarkerCount = []
+
     // adding Marker Cluster Layer
     let markerClusterLayer = L.markerClusterGroup();
 
@@ -37,6 +40,9 @@ async function loadResult(streetName, flatType, resultLayer, map) {
 
     // Load coordinates and find center point of searched results on map
     let coordinates = data[1];
+
+    // count the number of coordinates via globalMarkerArray
+    globalMarkerCount.push(coordinates)
     if (coordinates.length  == 0){
 
 
@@ -48,6 +54,16 @@ async function loadResult(streetName, flatType, resultLayer, map) {
         noModal.toggle()
 
     }else{
+        // push corrdinates into global array
+    globalMarkerCount.push(coordinates)
+
+    // count the number of markers generated
+    let count = 0
+    for (let i = 0; i < globalMarkerCount.length; i++) {
+      count += globalMarkerCount[i].length;
+    }
+    // console.log(count)
+
     let midIndex = Math.round((coordinates.length) / 2);
     let startView = coordinates[midIndex];
     
@@ -70,6 +86,26 @@ async function loadResult(streetName, flatType, resultLayer, map) {
         animate: true,
         duration: 2,
     });
+
+    // Load modal that displays the number of transaction found  
+
+    let showResultModal = document.getElementById("resultModal")
+            showResultModal.innerHTML = `
+            <div class="modal-dialog modal-sm modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-center">${count/2} HDB Resale Transactions Found</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p class="center">Each house icon represents a transaction. Click on it to see the transaction details.</p>
+                </div>
+              </div>
+            </div>
+          </div> `
+          
+          const resultModal = new bootstrap.Modal(document.getElementById("resultModal"), {})
+            resultModal.toggle()
 
     // remove spinner after finish loading
     const spinnerBackground = document.querySelector("#spinner-background");

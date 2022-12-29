@@ -19,9 +19,6 @@ async function main() {
     const resultLayer = L.layerGroup();
     resultLayer.addTo(map);
 
-
-
-
     // picking up postal code value from form to match One Map data then returning address and building/estate values
     document.querySelector('input[type="postalCode"]').addEventListener("keyup", async function () {
       getPostalCode = document.querySelector('input[type="postalCode"]').value;
@@ -107,6 +104,7 @@ async function main() {
         await loadResult(streetName, flatType, resultLayer, map);
  
       } else {
+        // reset globaMarkerArray
         globalMarkerCount = []
 
         resultLayer.clearLayers()
@@ -154,7 +152,7 @@ async function main() {
           for (let i = 0; i < globalMarkerCount.length; i++) {
             count += globalMarkerCount[i].length;
           }
-          console.log(count)
+          // console.log(count)
           if (count == 0){
 
              // load no transactions found
@@ -191,7 +189,7 @@ async function main() {
           }
           
       }
-        globalMarkerCount = null
+        // globalMarkerCount = null
 
     });
 
