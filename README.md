@@ -1,5 +1,5 @@
-<b>DWAD19 Project One</b><br>
-<b>Project Name : SGxProperty</b>
+<h2>DWAD19 Project One</h2><br>
+<h2><b>Project Name : SGxProperty</h2></b>
 
 SGxProperty is a map-based application that checks for residential property transactions in Singapore. As more than 80% of the residential property in Singapore are flats built by the Housing & Development Board, the first released version is designed specially for home owners and buyers to check for Resale (Secondary Market) HDBs flats that were transacted in 2022. 
 
@@ -15,7 +15,7 @@ The objective of SGxProperty is to provide an intuitive, no fuss and no frills w
 
 The application can be access here: https://geriang.github.io/
 
-<u>UX/UI</u>
+<h3>UX/UI</h3>
 
 - Full Map
 - Clean UI only two interactive buttons
@@ -25,30 +25,30 @@ List down the user stories and their acceptance criteria.
 Share links to wireframes, mockups, diagrams that are used in the UI/UX processes. Those files can be pushed to the Github repository, or be placed in a separate PDF file as part of the repository. 
 Describe what your considerations were for the Five Planes of UI/UX, such as the choice of color and fonts for the surface plane, or information organization strategy for the structure plane. 
 
-FEATURES
 
-List down the major features of your application, and also the algorithms that you have used to implement those features. If there are any limitations or bugs, please describe them as well. If you have any features pending implementation, you can also take the opportunity to discuss them here.
-Major features of the application includes
+<h3>FEATURES</h3>
 
-- Introductory Modal Pop-up, explaining the application upon loading the webpage
+Major features of the application includes:
 
-- Toggle on-off feature for the Introductory Modal
+- Introductory Modal Pop-up, explaining the application upon loading the webpage. (using Javascript DOM - addEventListener)
 
-- Toggle on-off feature for the search form, and auto collapse when search is triggered
+- Toggle on-off feature for the Introductory Modal (using Bootstrap Modal & Javascript DOM)
 
-- Postal Code field that generates an address automatically
+- Toggle on-off feature for the search form, and auto collapse when search is triggered (Bootstrap inbuilt form features)
 
-- A lock feature that disables the submit button when the postal code field is not filled up to 6 digits. The lock feature however can be removed by   entering 6 non-digit characters or symbols in the field and this issue needs to be rectified. 
+- Postal Code field that generates an address automatically (Javascript DOM - addEventListener(keyup) & axios.get)
 
-- Tool tips for all the fields in the search form
+- A lock feature that disables the submit button when the postal code field is not filled up to 6 digits. The lock feature however can be removed by   entering 6 non-digit characters or symbols in the field and this issue needs to be rectified. (Javascript DOM and Bootstrap inbuilt button disabler)
 
-- A loading spinner when the search is running to show that the search function is operating correctly.
+- Tool tips for all the fields in the search form (Javascript DOM - addEventListener(mouseover))
 
-- A modal pop-up appears when the search is completed, showing the search result which either reflects the number of transactions found or no transaction was found
+- A loading spinner when the search is running to show that the search function is operating correctly (Bootstrap Load Spinner feature & Javascipt DOM)
+
+- A modal pop-up appears when the search is completed, showing the search result which either reflects the number of transactions found or no transaction was found (Bootstrap inbuilt Modal feature & Javascript DOM - getElementById & InnerHTML)
 
 
 
-USER STORIES
+<h3>USER STORIES</h3>
 If you wish to present the features list in a form more suitable for software development, you can write them as user stories instead. 
 A basic user story consists of: 
  The role, or type of the user
@@ -56,9 +56,11 @@ A statement describing what the user wishes to a
 A statement describing the intent of the user
 Explain what features in your application can meet this particular user story.
 
-TECHNOLOGIES USED
+<h3>TECHNOLOGIES USED</h3>
+
 Provide an overview of the languages, frameworks, libraries and any other tools that you have used to produce the project. Be sure to provide a short description of where in the project the technology is used, and a URL to its Github repository. 
-TESTING
+
+<h3>TESTING</h3>
 Provide proof that you have done testing on your project. You can provide step by step instructions for the examiner to test the project. Use your user stories and their acceptance criteria as a starting point. Do note that any unhandled exceptions, console errors etc will be considered as failing the testing criteria. 
 You may want to provide manual test cases. An example of a manual test case could be: 
 1. Test that user can sign in 
@@ -101,15 +103,17 @@ The expected results
 Any assumptions or prerequisites
 
 The examiner must be able to follow your test case.
-DEPLOYMENT
+
+<h3>DEPLOYMENT</h3>
 Describe the process that you used to host your website on a hosting platform (such as Github pages or Heroku). Provide the following details: 
 1. What is your hosting platform? 
 2. How is the database hosted? 
 3. What are the environment variables and what are they responsible for? 4. What are the dependencies that your project used? 
 5. What are the deployment steps for the project? 
 You can provide deployment details in a separate document (PDF or another markdown file). There is no need to be original for this section; if another website or document have the steps, just link there and acknowledge the author in your credits, 
-LIVE LINK
+
+<h3>LIVE LINK</h3>
 You should include a live link to your deployed web site.
 
-CREDITS AND ACKNOWLEDGMENT
+<h3>CREDITS AND ACKNOWLEDGMENT</h3>
 Put here all the code, content and assets that you have used. If you have used a piece of code from an external website, please acknowledge it and provide a link to it. 
