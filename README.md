@@ -9,7 +9,7 @@ Similarly for home buyers, it will be beneficial to study the transacted prices 
 
 At the moment, there is a lack of map-based web applications in the market for home sellers and buyers to intuitively check for past transactions of HDB Flats. 
 
-To find out past HDB transaction prices, they either have to search it directly on HDB's website (https://services2.hdb.gov.sg/webapp/BB33RTIS/), which could be difficult to manoeuvre or enquire directly from their real estate agents. Alternatively, commercial portal portals such as PropertyGuru only displays partial information based only on a selected block of flat. 
+To find out past HDB transaction prices, they either have to search it directly on HDB's website (https://services2.hdb.gov.sg/webapp/BB33RTIS/), which could be difficult to manoeuvre as there are too many irrelevant information, or enquire directly from their real estate agents. Alternatively, commercial portal portals such as PropertyGuru only displays partial information based only on a selected block of flat. 
 
 The objective of SGxProperty is to provide an intuitive, no fuss and no frills way for home sellers and home buyers or anyone curious enough to look up for information of transacted flats in their estate.
 
@@ -46,6 +46,8 @@ Major features of the application includes:
 
 - A modal pop-up appears when the search is completed, showing the search result which either reflects the number of transactions found or no transaction was found (Bootstrap inbuilt Modal feature & Javascript DOM - getElementById & InnerHTML)
 
+- Mobile Responsive (Bootstrap)
+
 
 <h3>TECHNOLOGIES USED</h3>
 
@@ -60,9 +62,38 @@ used in https://github.com/geriang/geriang.github.io/blob/main/map.js
 Axios - https://axios-http.com/docs/intro for making async API calls and requests.
 mainly used in [data_govsg.js & data_onemap.js](https://github.com/geriang/geriang.github.io/blob/main/data_govsg.js) (https://github.com/geriang/geriang.github.io/blob/main/data_onemap.js)
 
+Data Sources consumed:
+
+Data.gov.sg
+https://data.gov.sg/dataset/resale-flat-prices?view_id=093ff0f0-783f-4f6a-be52-7e506a8c58ca&resource_id=f1765b54-a209-4718-8d38-a39237f502b3
+
+One Map
+https://www.onemap.gov.sg/docs/#onemap-rest-apis
 
 
 <h3>TESTING</h3>
+
+Loading the main page 
+
+User Story : US
+Testing instructions : TS
+1.US: I want to have an overview of what the web-app is for and how to use it. 
+  TS: Modal with description shows up after the main page finished loading.
+
+2.US: I accidentally closed the pop up modal. I want to see the modal with description again.
+  TS: Click on the information icon (depicted by "i") to open the modal again and click anywhere outside the modal or "X" to close
+
+3.US: I want to start searching for transacted HDB Flats near my home.
+  TS: Click on the search icon (depicted by a magnifying glass)
+  
+4.US: I want to key in my address conveniently using my postal code.
+  TS: Type in the full 6 digit postal code in the Postal Code field
+  
+5.US: I want to find the transacted flats that are similar to my current flat type.
+
+4.US: I want to start searching where and what are the HDB flats that are sold along the street of my home address
+  TS: 
+
 
 Provide proof that you have done testing on your project. You can provide step by step instructions for the examiner to test the project. Use your user stories and their acceptance criteria as a starting point. Do note that any unhandled exceptions, console errors etc will be considered as failing the testing criteria. 
 You may want to provide manual test cases. An example of a manual test case could be: 
