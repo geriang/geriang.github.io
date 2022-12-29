@@ -52,18 +52,22 @@ Major features of the application includes:
 The project is written in HTML, CSS, and Javascript languages. 
 The following libraries were used:
 Bootstrap - https://getbootstrap.com/ for pre-built HTML, CSS & Javascript web features such as forms, modal, loading spinner and buttons
+used in https://github.com/geriang/geriang.github.io/blob/main/index.html
+
 Leaflet - https://leafletjs.com/ for pre-built Map features
+used in https://github.com/geriang/geriang.github.io/blob/main/map.js
 
 Axios - https://axios-http.com/docs/intro for making async API calls and requests.
-used in data_govsg.js & data_onemap.js
+mainly used in [data_govsg.js & data_onemap.js](https://github.com/geriang/geriang.github.io/blob/main/data_govsg.js) (https://github.com/geriang/geriang.github.io/blob/main/data_onemap.js)
 
 
-
-Provide an overview of the languages, frameworks, libraries and any other tools that you have used to produce the project. Be sure to provide a short description of where in the project the technology is used, and a URL to its Github repository. 
 
 <h3>TESTING</h3>
+
 Provide proof that you have done testing on your project. You can provide step by step instructions for the examiner to test the project. Use your user stories and their acceptance criteria as a starting point. Do note that any unhandled exceptions, console errors etc will be considered as failing the testing criteria. 
 You may want to provide manual test cases. An example of a manual test case could be: 
+
+1. Loading the main page
 1. Test that user can sign in 
 a. From the home page, click on the 'Login' button 
 b. Fill in a valid username and password and click on the 'Login' button c. The user should be redirected to the profile page 
