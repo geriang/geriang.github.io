@@ -1,23 +1,52 @@
 <b>DWAD19 Project One</b><br>
 <b>Project Name : SGxProperty</b>
 
-SGxProperty is a residential property transaction map-based checker, designed specially for home owners and buyers to check for Resale (Secondary Market) HDBs (Housing & Development Board) flats that were transacted in 2022.
+SGxProperty is a map-based application that checks for residential property transactions in Singapore. As more than 80% of the residential property in Singapore are flats built by the Housing & Development Board, the first released version is designed specially for home owners and buyers to check for Resale (Secondary Market) HDBs flats that were transacted in 2022. 
 
-With the ever climbing property prices and the burst in property transactions during recent years, it has become important for home sellers to know how much their flat could fetch based on the recent transactions in their neighbourhood.  
+With the ever climbing property prices and the burst in property transactions during recent years, it has become important for home sellers to know how much their flat could fetch based on the recent transactions in their neighbourhood. 
 
-Begin with your project name, and a summary of what your project is about. Briefly describe the motivations of the owners who kickstarted this project. Treat it as an elevator pitch for your project. 
-Describe the context of your project. If the project is based on a complex premise, explain the content so that the reader can understand it.
-Describe each target audience group and their characteristics
-Describe the user goals and the organization's goals
-Make sure to justify why the project should exists 
-Include a URL to the deployed version of your project 
-UX/UI 
+Similarly for home buyers, it will be beneficial to study the transacted prices of flats in their favoured estate first before committing to any purchase.
+
+At the moment, there is a lack of map-based web applications in the market for home sellers and buyers to intuitively check for past transactions of HDB Flats. 
+
+To find out past HDB transaction prices, they either have to search it directly on HDB's website (https://services2.hdb.gov.sg/webapp/BB33RTIS/), which could be difficult to manoeuvre or enquire directly from their real estate agents. Alternatively, commercial portal portals such as PropertyGuru only displays partial information based only on a selected block of flat. 
+
+The objective of SGxProperty is to provide an intuitive, no fuss and no frills way for home sellers and home buyers or anyone curious enough to look up for information of transacted flats in their estate.
+
+The application can be access here: https://geriang.github.io/
+
+<u>UX/UI</u>
+
+- Full Map
+- Clean UI only two interactive buttons
+
 This section should: 
 List down the user stories and their acceptance criteria. 
 Share links to wireframes, mockups, diagrams that are used in the UI/UX processes. Those files can be pushed to the Github repository, or be placed in a separate PDF file as part of the repository. 
 Describe what your considerations were for the Five Planes of UI/UX, such as the choice of color and fonts for the surface plane, or information organization strategy for the structure plane. 
+
 FEATURES
+
 List down the major features of your application, and also the algorithms that you have used to implement those features. If there are any limitations or bugs, please describe them as well. If you have any features pending implementation, you can also take the opportunity to discuss them here.
+Major features of the application includes
+
+- Introductory Modal Pop-up, explaining the application upon loading the webpage
+
+- Toggle on-off feature for the Introductory Modal
+
+- Toggle on-off feature for the search form, and auto collapse when search is triggered
+
+- Postal Code field that generates an address automatically
+
+- A lock feature that disables the submit button when the postal code field is not filled up to 6 digits. The lock feature however can be removed by   entering 6 non-digit characters or symbols in the field and this issue needs to be rectified. 
+
+- Tool tips for all the fields in the search form
+
+- A loading spinner when the search is running to show that the search function is operating correctly.
+
+- A modal pop-up appears when the search is completed, showing the search result which either reflects the number of transactions found or no transaction was found
+
+
 
 USER STORIES
 If you wish to present the features list in a form more suitable for software development, you can write them as user stories instead. 
