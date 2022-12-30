@@ -94,6 +94,14 @@ Testing instructions : TS
   
 6.US: I want to find the transacted flats that are similar to my current flat type.
   TS: Click on the drop down field to select the desired flat-type
+  
+7.US: I want to search HDB resale transactions along the road where my flat is at 
+  TS: Click on Entire Street radio button and click Submit Button
+  
+8.US: I wamt to search HDB resale transactions that are nearby and surrounding my flat.
+  TS: Click on the Nearest Block radio button and click Submit Button
+
+
 
 4.US: I want to start searching where and what are the HDB flats that are sold along the street of my home address
   TS: 
