@@ -12,17 +12,13 @@ function loadMap() {
     tileLayer.addTo(map);
 
     return map;
-
-}
+};
 
 // customize marker
 const houseIcon = L.icon({
 iconUrl: 'icons/HomeMarker.png',
-// shadowUrl: 'icons/HomeMarkerSmall.png',
 iconSize:     [40, 40], // size of the icon
-// shadowSize:   [50, 64], // size of the shadow
 iconAnchor:   [20, 40], // point of the icon which will correspond to marker's location
-// shadowAnchor: [4, 62],  // the same for the shadow
 popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
         });
 
@@ -30,7 +26,7 @@ popupAnchor:  [0, -30] // point from which the popup should open relative to the
 async function loadResult(streetName, flatType, resultLayer, map) {
 
     // reset globaMarkerArray
-    globalMarkerCount = []
+    globalMarkerCount = [];
 
     // adding Marker Cluster Layer
     let markerClusterLayer = L.markerClusterGroup();
@@ -42,32 +38,30 @@ async function loadResult(streetName, flatType, resultLayer, map) {
     let coordinates = data[1];
 
     // count the number of coordinates via globalMarkerArray
-    globalMarkerCount.push(coordinates)
+    globalMarkerCount.push(coordinates);
     if (coordinates.length  == 0){
-
 
         // remove spinner after finish loading
         const spinnerBackground = document.querySelector("#spinner-background");
         spinnerBackground.style.display = "none";
+
         // load no transactions found
-        const noModal = new bootstrap.Modal(document.getElementById("noResultModal"), {})
-        noModal.toggle()
+        const noModal = new bootstrap.Modal(document.getElementById("noResultModal"), {});
+        noModal.toggle();
 
     }else{
         // push corrdinates into global array
-    globalMarkerCount.push(coordinates)
+    globalMarkerCount.push(coordinates);
 
     // count the number of markers generated
-    let count = 0
+    let count = 0;
     for (let i = 0; i < globalMarkerCount.length; i++) {
       count += globalMarkerCount[i].length;
-    }
-    // console.log(count)
+    };
 
     let midIndex = Math.round((coordinates.length) / 2);
     let startView = coordinates[midIndex];
     
-
     // Map coordinates and transaction infomation
     coordinates.map((pos, index) => {
         L.marker((pos),{icon: houseIcon})
@@ -88,8 +82,7 @@ async function loadResult(streetName, flatType, resultLayer, map) {
     });
 
     // Load modal that displays the number of transaction found  
-
-    let showResultModal = document.getElementById("resultModal")
+    let showResultModal = document.getElementById("resultModal");
             showResultModal.innerHTML = `
             <div class="modal-dialog modal-sm modal-dialog-centered">
               <div class="modal-content">
@@ -102,15 +95,15 @@ async function loadResult(streetName, flatType, resultLayer, map) {
                 </div>
               </div>
             </div>
-          </div> `
+          </div> `;
           
-          const resultModal = new bootstrap.Modal(document.getElementById("resultModal"), {})
-            resultModal.toggle()
+          const resultModal = new bootstrap.Modal(document.getElementById("resultModal"), {});
+            resultModal.toggle();
 
     // remove spinner after finish loading
     const spinnerBackground = document.querySelector("#spinner-background");
     spinnerBackground.style.display = "none";
-}
+};
 };
 
 // load nearest block result
@@ -118,7 +111,7 @@ async function loadResult(streetName, flatType, resultLayer, map) {
 
         // load coordinates for search result according to 500m radius
         let coordinates = await loadNearbyCoordinate(2022, block, streetName, flatType);
-        globalMarkerCount.push(coordinates)
+        globalMarkerCount.push(coordinates);
     
             // adding Marker Cluster Layer
             let markerClusterLayer = L.markerClusterGroup();

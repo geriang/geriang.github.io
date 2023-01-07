@@ -1,8 +1,5 @@
-const dataGovSGBaseApiUrl = "https://data.gov.sg/api/action/datastore_search"
-const resourceID = "?resource_id=f1765b54-a209-4718-8d38-a39237f502b3"
-const filterMonth = "&filters={'month':'2022-12'}"
-
-// https://data.gov.sg/api/action/datastore_search?resource_id=f1765b54-a209-4718-8d38-a39237f502b3&q={"month":"2022","street_name":"YISHUN ST 72","flat_type":"5 ROOM"}&limit=1200
+const dataGovSGBaseApiUrl = "https://data.gov.sg/api/action/datastore_search";
+const resourceID = "?resource_id=f1765b54-a209-4718-8d38-a39237f502b3";
 
 // enter year and street name to retrieve coordinates and transaction information 
 async function loadTransactionInfo(year, streetName, flatType) {
@@ -54,6 +51,7 @@ async function loadNearbyTransactionInfo(year, block, streetName, flatType) {
 
         array.push(object);
     };
+
     return array;
 };
 

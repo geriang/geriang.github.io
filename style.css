@@ -1,3 +1,4 @@
+/* Information Button cofiguration */
 #modalButton {
     position: fixed;
     height: 45px;
@@ -8,15 +9,17 @@
     z-index: 1000;
 }
 
+/* The ontainer that contains the map */
 #mapContainer {
     position: relative;
 }
 
-
+/* The map itself */
 #map {
     height: 100vh;
 }
 
+/* The container that contains the search form */
 #inputContainer {
     position: fixed;
     /* height: 300px; */
@@ -26,46 +29,54 @@
     z-index: 900;
 }
 
+/* To allow scroll bar for the search form when the detected screen size is small */
 @media only screen and (max-height: 600px) {
     #collapseExample {
-        height: 300px
+        height: 300px;
     }
-
 }
 
+/* Search button to trigger the search form */
 #searchButton {
     height: 45px;
     width: 45px;
     opacity: 0.8;
 }
 
+/* positioning the search icon in the button  */
 .searchCenter {
     height: 23px;
     width: 23px;
 }
 
+/* positioning the information icon in the the button that triggers the modal to display information  */
 .modalCenter {
     height: 21px;
     width: 20px;
 }
 
+/* positioning the Submit button at the end of the search form */
 #formButton {
     position: relative;
     left: 70px;
 }
 
+/* hiding tooltip for postal code field*/
 #helpPostal {
     display: none;
 }
 
+/* hiding tooltip for HDB Type selection field*/
 #helpDropdown {
     display: none;
 }
 
+/* hiding tooltip for radio button search result type field*/
 #helpRadio {
     display: none;
 }
 
+/* Configuration for spinner  */
 #spinner-background {
     background-color: black;
     opacity: 0.7;
@@ -78,9 +89,9 @@
     justify-content: center;
     align-items: center;
     z-index: 2000;
-
 }
 
+/* Configuration for spinner */
 .spinner-border {
     height: 60px;
     width: 60px;
