@@ -13,8 +13,6 @@ To find out past HDB transaction prices, they either have to search it directly 
 
 The objective of SGxProperty is to provide an intuitive, no fuss and no frills way for home sellers and home buyers or anyone curious enough to look up for information of transacted flats in their estate.
 
-The application can be access here: https://geriang.github.io/
-
 <h3>UX/UI</h3>
 
 - Full Map
@@ -116,52 +114,10 @@ Testing instructions : TS
 13.US: I want to search for HDB Resale transactions in another location again
    TS: Click on the search button again fill up the postal code
 
-Provide proof that you have done testing on your project. You can provide step by step instructions for the examiner to test the project. Use your user stories and their acceptance criteria as a starting point. Do note that any unhandled exceptions, console errors etc will be considered as failing the testing criteria. 
-You may want to provide manual test cases. An example of a manual test case could be: 
-
-1. Loading the main page
-1. Test that user can sign in 
-a. From the home page, click on the 'Login' button 
-b. Fill in a valid username and password and click on the 'Login' button c. The user should be redirected to the profile page 
-2. Test user entering an invalid password 
-a. From the home page, click on the 'Login' button 
-b. FIll in a valid username but an invalid password, and click on the 'Login' button c. The user should be informed that the login has failed.
-
-
-
-You can consider putting your manual test cases in a PDF file if they make your readme file too long. 
-TEST CASES
-If you wish to present your testing steps in a clearer method, consider writing test cases. A test case consists of the following structure:
-
-
-Test Case #
-Test Case Description
-Test Steps
-Expected Result
-
-
-Prerequisite: The user is at the calculate BMI form
-
-
-
-
-1
-Calculate the BMI 
-1) Enter the weight into the textbox as 84kg
-2) Enter the height into the textbox as 1.71
-3) Click the Calculate Button
-The BMI is shown as 28.7
-
-
-The above format is just an example. As long as you provide:
-A description of the test case
-The steps for performing the test
-The expected results
-Any assumptions or prerequisites
-
-The examiner must be able to follow your test case.
-
 <h3>DEPLOYMENT</h3>
+
+The web application is hosted on Github
+
 Describe the process that you used to host your website on a hosting platform (such as Github pages or Heroku). Provide the following details: 
 1. What is your hosting platform? 
 2. How is the database hosted? 
@@ -170,7 +126,23 @@ Describe the process that you used to host your website on a hosting platform (s
 You can provide deployment details in a separate document (PDF or another markdown file). There is no need to be original for this section; if another website or document have the steps, just link there and acknowledge the author in your credits, 
 
 <h3>LIVE LINK</h3>
-You should include a live link to your deployed web site.
+
+The application can be access here: https://geriang.github.io/
 
 <h3>CREDITS AND ACKNOWLEDGMENT</h3>
-Put here all the code, content and assets that you have used. If you have used a piece of code from an external website, please acknowledge it and provide a link to it. 
+
+Reference codes:
+
+https://stackoverflow.com/users/171456/zim
+solution to trigger the modal via Javascript DOM
+
+https://stackoverflow.com/questions/4993764/how-to-remove-numbers-from-a-string
+using regex to remove only numbers in the beginning part of a string. This helped me to shorten my code so that I could remove only the blk no. on each address.
+
+https://stackoverflow.com/questions/15604140/replace-multiple-strings-with-multiple-other-strings
+solution to replace multiple words in a string and it helped me to shorten my codes.
+
+Special thanks to Yong Sheng my codes and Ace for teaching me how to use the mapping function vs. for loop. 
+
+Special thanks to JJ for testing my application and giving me some valuable suggestions such as creating a "loading" feature
+
