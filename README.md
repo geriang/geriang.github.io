@@ -15,13 +15,12 @@ The objective of SGxProperty is to provide an intuitive, no fuss and no frills w
 
 <h3>UX/UI</h3>
 
-- Full Map
-- Clean UI only two interactive buttons
+- Full Map Display
+- Clean UI, only two interactive buttons
+- Mobile Responsive, e.g. scrollable content, such as scrollable search form when display height is reduced to below 600px
 
-This section should: 
-List down the user stories and their acceptance criteria. 
-Share links to wireframes, mockups, diagrams that are used in the UI/UX processes. Those files can be pushed to the Github repository, or be placed in a separate PDF file as part of the repository. 
-Describe what your considerations were for the Five Planes of UI/UX, such as the choice of color and fonts for the surface plane, or information organization strategy for the structure plane. 
+Wireframe:
+https://balsamiq.cloud/schn6ez/pfp0937/r69E6
 
 
 <h3>FEATURES</h3>
@@ -132,6 +131,10 @@ You can provide deployment details in a separate document (PDF or another markdo
 
 The application can be access here: https://geriang.github.io/
 
+<h3>LIMITATIONS & IMPROVEMENTS</h3>
+
+1. Reconfiguring address to match other api
+
 <h3>CREDITS AND ACKNOWLEDGMENT</h3>
 
 Reference codes:
@@ -145,6 +148,16 @@ using regex to remove only numbers in the beginning part of a string. This helpe
 https://stackoverflow.com/questions/15604140/replace-multiple-strings-with-multiple-other-strings
 solution to replace multiple words in a string and it helped me to shorten my codes.
 
-Special thanks to Yong Sheng my codes and Ace for teaching me how to use the mapping function vs. for loop. 
+Special thanks to Yong Sheng my codes and Ace for teaching me how to use the mapping function vs. for loop 
+=>  let data1 = [1,2,3]
+    let data2 = ["a","b","c"]
+For Loop:
+    for (let i=0; i<data1.length; i++){
+        console.log(data[i],data2[i])
+    };
+Map:
+    data1.map( (item,index) => {
+        console.log(item, data2[index])
+    })
 
 Special thanks to JJ for testing my application and giving me some valuable suggestions such as creating a "loading" feature
