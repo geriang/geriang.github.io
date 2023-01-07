@@ -77,35 +77,44 @@ Loading the main page
 
 User Story : US
 Testing instructions : TS
-1.US: I want to have an overview of what the web-app is for and how to use it. 
-  TS: Modal with description shows up after the main page finished loading.
+1.US: I want to have an overview of what the web-app is for and how to use it 
+  TS: Modal with description shows up after the main page finished loading
 
-2.US: I accidentally closed the pop up modal. I want to see the modal with description again.
+2.US: I accidentally closed the pop up modal. I want to see the modal with description again
   TS: Click on the information icon (depicted by "i") to open the modal again and click anywhere outside the modal or "X" to close
 
-3.US: I want to start searching for transacted HDB Flats near my home.
+3.US: I want to start searching for transacted HDB Flats near my home
   TS: Click on the search icon (depicted by a magnifying glass)
   
-4.US: I am not sure what are the displayed fields are for.
+4.US: I am not sure what are the displayed fields are for
   TS: Mouseover (desktop) or tap (mobile) the fields to display the purpose of the fields
   
-5.US: I want to key in my address conveniently using my postal code.
+5.US: I want to key in my address conveniently using my postal code
   TS: Type in the full 6 digit postal code in the Postal Code field
   
-6.US: I want to find the transacted flats that are similar to my current flat type.
+6.US: I want to find the transacted flats that are similar to my current flat type
   TS: Click on the drop down field to select the desired flat-type
   
 7.US: I want to search HDB resale transactions along the road where my flat is at 
   TS: Click on Entire Street radio button and click Submit Button
   
-8.US: I wamt to search HDB resale transactions that are nearby and surrounding my flat.
+8.US: I wamt to search HDB resale transactions that are nearby and surrounding my flat
   TS: Click on the Nearest Block radio button and click Submit Button
 
+9.US: I want to have a full map display when the transaction result is generated
+  TS: Once the submit button is clicked, the form will auto collapse 
 
+10.US: I want to see how many transactions were found
+   TS: A modal pop-up shows up with either the transaction count or a display that says no transactions were found
 
-4.US: I want to start searching where and what are the HDB flats that are sold along the street of my home address
-  TS: 
+11.US: I want to see how many transactions were found on each block
+   TS: A cluster marker will display the count number on each respective block
 
+12.US: I want to see the transaction details, such as the transacted price and month
+   TS: Click on the individual markers to view the transaction information
+
+13.US: I want to search for HDB Resale transactions in another location again
+   TS: Click on the search button again fill up the postal code
 
 Provide proof that you have done testing on your project. You can provide step by step instructions for the examiner to test the project. Use your user stories and their acceptance criteria as a starting point. Do note that any unhandled exceptions, console errors etc will be considered as failing the testing criteria. 
 You may want to provide manual test cases. An example of a manual test case could be: 
