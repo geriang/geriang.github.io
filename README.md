@@ -139,6 +139,10 @@ The application can be access here: https://geriang.github.io/
 
 Reference codes:
 
+https://www.w3schools.com/
+found solutions to using mouseover, key-up, as eventlistener comamnds, and also setting display animations/transitions via
+document.getElementById("myDIV").style.opacity, document.getElementById("myDIV").style.display etc. and also CSS styling codes.
+
 https://stackoverflow.com/users/171456/zim
 solution to trigger the modal via Javascript DOM
 
@@ -161,3 +165,5 @@ Map:
     })
 
 Special thanks to JJ for testing my application and giving me some valuable suggestions such as creating a "loading" feature
+
+Special thanks to Flat Icon as the icons used in the web application were retreive from here https://www.flaticon.com/free-icons/information

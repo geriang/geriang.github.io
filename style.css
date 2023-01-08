@@ -9,7 +9,7 @@
     z-index: 1000;
 }
 
-/* The ontainer that contains the map */
+/* The container that contains the map */
 #mapContainer {
     position: relative;
 }
@@ -22,12 +22,38 @@
 /* The container that contains the search form */
 #inputContainer {
     position: fixed;
-    /* height: 300px; */
-    width: 320px;
+    /*320px; */
+    width: 360px;
     top: 132px;
     left: 0px;
     z-index: 900;
 }
+
+/* positioning the question marks in the search form */
+#questionMarkPostalCode {
+    position: relative;
+    height:50px;
+    width:50px;
+    left:0px;
+    top: 30px;
+}
+
+#questionMarkRoomType {
+    position: relative;
+    height:50px;
+    width:50px;
+    left:0px;
+    top: 15px;
+}
+
+#questionMarkSearchType {
+    position: relative;
+    height:50px;
+    width:50px;
+    left:0px;
+    top: 8px;
+}
+
 
 /* To allow scroll bar for the search form when the detected screen size is small */
 @media only screen and (max-height: 600px) {
@@ -58,7 +84,7 @@
 /* positioning the Submit button at the end of the search form */
 #formButton {
     position: relative;
-    left: 70px;
+    left: 90px;
 }
 
 /* hiding tooltip for postal code field*/
@@ -96,3 +122,36 @@
     height: 60px;
     width: 60px;
 }
+
+/* Search button tooltip */
+
+#tooltip {
+    position:fixed;
+    top: 132px;
+    left: 80px;
+    background: rgb(255, 255, 255);
+    color: red;
+    height: 45px;
+    width: 120px;
+    font-weight: bold;
+    padding: 10px 8px;
+    font-size: 14px;
+    border-radius: 4px;
+    display: none;
+    opacity: 0.7;
+  }
+
+  .arrow::before {
+    position: fixed;
+    top: 135px;
+    left: 65px;
+    content: "";
+    width: 0; 
+    height: 0; 
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 15px solid white;
+    opacity: 0.9;
+  }
+ 
+ 

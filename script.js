@@ -196,38 +196,53 @@ async function main() {
 
     // Tooltips section
 
+    // Search icon tooltip
+    document.querySelector("#exampleModal").addEventListener("hidden.bs.modal", function(){
+      let searchToolTip = document.querySelector("#tooltip");
+      searchToolTip.style.display = "block";
+      function fadeOut() {
+          setTimeout(function() {
+            searchToolTip.style.opacity = 0;
+          }, 2500);
+          setTimeout(function(){
+            searchToolTip.style.display = "none";
+          }, 3000);
+      };
+      fadeOut();
+    });
+
     // Tooltips for Postal Code
-    document.querySelector("#postal").addEventListener("mouseover", function () {
+    document.querySelector("#questionMarkPostalCode").addEventListener("mouseover", function () {
       let postalToolTip = document.querySelector("#helpPostal");
       postalToolTip.style.display = "block";
     });
 
     // remove tooltips
-    document.querySelector("#postal").addEventListener("mouseout", function () {
+    document.querySelector("#questionMarkPostalCode").addEventListener("mouseout", function () {
       let postalToolTip = document.querySelector("#helpPostal");
       postalToolTip.style.display = "none";
     });
 
     // Tooltips for Flat Type selection
-    document.querySelector("#flat").addEventListener("mouseover", function () {
+    document.querySelector("#questionMarkRoomType").addEventListener("mouseover", function () {
       let flatToolTip = document.querySelector("#helpDropdown");
       flatToolTip.style.display = "block";
     });
 
     // remove tooltips
-    document.querySelector("#flat").addEventListener("mouseout", function () {
+    document.querySelector("#questionMarkRoomType").addEventListener("mouseout", function () {
       let flatToolTip = document.querySelector("#helpDropdown");
       flatToolTip.style.display = "none";
     });
 
     //  Tooltip for Radio Button selection
-    document.querySelector("#radioSelection").addEventListener("mouseover", function () {
+    document.querySelector("#questionMarkSearchType").addEventListener("mouseover", function () {
       let radioToolTip = document.querySelector("#helpRadio");
       radioToolTip.style.display = "block";
     });
 
     // remove tooltips
-    document.querySelector("#radioSelection").addEventListener("mouseout", function () {
+    document.querySelector("#questionMarkSearchType").addEventListener("mouseout", function () {
       let radioToolTip = document.querySelector("#helpRadio");
       radioToolTip.style.display = "none";
     });
