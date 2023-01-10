@@ -1,3 +1,13 @@
+/* Navbar styling */
+.navbar {
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    opacity: 0.7;
+    z-index: 1500;
+}
+
+
 /* Information Button cofiguration */
 #modalButton {
     position: fixed;
@@ -32,25 +42,25 @@
 /* positioning the question marks in the search form */
 #questionMarkPostalCode {
     position: relative;
-    height:50px;
-    width:50px;
-    left:0px;
+    height: 50px;
+    width: 50px;
+    left: 0px;
     top: 30px;
 }
 
 #questionMarkRoomType {
     position: relative;
-    height:50px;
-    width:50px;
-    left:0px;
+    height: 50px;
+    width: 50px;
+    left: 0px;
     top: 15px;
 }
 
 #questionMarkSearchType {
     position: relative;
-    height:50px;
-    width:50px;
-    left:0px;
+    height: 50px;
+    width: 50px;
+    left: 0px;
     top: 8px;
 }
 
@@ -126,7 +136,7 @@
 /* Search button tooltip */
 
 #tooltip {
-    position:fixed;
+    position: fixed;
     top: 132px;
     left: 80px;
     background: rgb(255, 255, 255);
@@ -139,19 +149,17 @@
     border-radius: 4px;
     display: none;
     opacity: 0.7;
-  }
+}
 
-  .arrow::before {
+.arrow::before {
     position: fixed;
     top: 135px;
     left: 65px;
     content: "";
-    width: 0; 
-    height: 0; 
+    width: 0;
+    height: 0;
     border-top: 20px solid transparent;
     border-bottom: 20px solid transparent;
     border-right: 15px solid white;
     opacity: 0.9;
-  }
- 
- 
+}

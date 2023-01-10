@@ -23,10 +23,26 @@
 
 <body>
 
+  <!-- Navbar -->
+
+  <nav class="navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand fs-5">
+        <img src="icons/websitelogo.png" alt="Logo" width="30" height="30" class="d-inline-block align-middle">
+        SGxProperty
+      </a>
+    </div>
+  </nav>
+
   <!-- Map container start -->
   <div id="mapContainer">
+
+
+
     <!-- map -->
     <div id="map"></div>
+
+
 
     <!--Modal pop up starts  -->
     <!-- Button trigger modal -->
@@ -75,68 +91,68 @@
             <!-- Postal code field -->
             <div class="row">
               <div class="col-10">
-            <div id="postal" class="form-floating my-3">
-              <input type="postalCode" class="form-control" id="floatingInput" name="postalCode"
-                placeholder="Postal Code" maxlength="6" required>
-              <label for="floatingInput">Postal Code</label>
-              <div id="helpPostal" class="form-text text-danger ms-1">
-                Key in your HDB Postal Code. For HDB Flats only.
+                <div id="postal" class="form-floating my-3">
+                  <input type="postalCode" class="form-control" id="floatingInput" name="postalCode"
+                    placeholder="Postal Code" maxlength="6" required>
+                  <label for="floatingInput">Postal Code</label>
+                  <div id="helpPostal" class="form-text text-danger ms-1">
+                    Key in your HDB Postal Code. For HDB Flats only.
+                  </div>
+                </div>
+              </div>
+              <div id="questionMarkPostalCode" class="col-2">
+                <img src="icons/question.png" style="height:15px; width:15px">
               </div>
             </div>
-          </div>
-          <div id="questionMarkPostalCode" class="col-2">
-            <img src ="icons/question.png" style="height:15px; width:15px">
-          </div>
-          </div>
             <!-- Address field -->
             <div id="address"></div>
             <!-- HDB Room Type field -->
             <div class="row">
               <div class="col-10">
-            <div class="form-floating mb-3">
-              <select id="flat" class="form-select" aria-label="Default select example" required>
-                <option value="1 ROOM" selected>HDB One-Room</option>
-                <option value="2 ROOM">HDB Two-Room</option>
-                <option value="3 ROOM">HDB Three-Room</option>
-                <option value="4 ROOM">HDB Four-Room</option>
-                <option value="5 ROOM">HDB Five-Room</option>
-                <option value="EXECUTIVE">HDB EA/EM</option>
-                <option value="MULTI-GENERATION">HDB Multi-Generation</option>
-              </select>
-              <div id="helpDropdown" class="form-text text-danger ms-1">
-                Select the type of HDB Flat
-              </div>
-            </div>
-          </div>
-            <div id="questionMarkRoomType" class="col-2">
-              <img src ="icons/question.png" style="height:15px; width:15px">
-            </div>
-          </div>
-          <!-- Search type radio buttons -->
-          <div class="row">
-            <div class="col-10">
-            <div id="radioSelection">
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                <label class="form-check-label" for="flexRadioDefault1">
-                  Entire Street
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                <label class="form-check-label" for="flexRadioDefault2">
-                  Nearest Blocks
-                </label>
-                <div id="helpRadio" class="form-text text-danger ms-1">
-                  Enquire base on street or surrounding blocks (max 10)
+                <div class="form-floating mb-3">
+                  <select id="flat" class="form-select" aria-label="Default select example" required>
+                    <option value="1 ROOM" selected>HDB One-Room</option>
+                    <option value="2 ROOM">HDB Two-Room</option>
+                    <option value="3 ROOM">HDB Three-Room</option>
+                    <option value="4 ROOM">HDB Four-Room</option>
+                    <option value="5 ROOM">HDB Five-Room</option>
+                    <option value="EXECUTIVE">HDB EA/EM</option>
+                    <option value="MULTI-GENERATION">HDB Multi-Generation</option>
+                  </select>
+                  <div id="helpDropdown" class="form-text text-danger ms-1">
+                    Select the type of HDB Flat
+                  </div>
                 </div>
               </div>
+              <div id="questionMarkRoomType" class="col-2">
+                <img src="icons/question.png" style="height:15px; width:15px">
+              </div>
             </div>
-          </div>
-          <div id="questionMarkSearchType" class="col-2">
-            <img src ="icons/question.png" style="height:15px; width:15px">
-          </div>
-          </div>
+            <!-- Search type radio buttons -->
+            <div class="row">
+              <div class="col-10">
+                <div id="radioSelection">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Entire Street
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      Nearest Blocks
+                    </label>
+                    <div id="helpRadio" class="form-text text-danger ms-1">
+                      Enquire base on street or surrounding blocks (max 10)
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="questionMarkSearchType" class="col-2">
+                <img src="icons/question.png" style="height:15px; width:15px">
+              </div>
+            </div>
             <!-- Submit button -->
             <div class="container mt-4 mb-2">
               <button type="submit" disabled id="formButton" class="btn btn-danger" data-bs-toggle="collapse"
@@ -176,40 +192,38 @@
           </div>
         </div>
       </div>
-    </div> 
+    </div>
     <!-- Load No Result Modal ends -->
 
-        <!-- Load Result Modal starts -->
-        <div id="resultModal" class="modal" tabindex="-1"></div>
-        <!-- Load Result Modal ends -->
+    <!-- Load Result Modal starts -->
+    <div id="resultModal" class="modal" tabindex="-1"></div>
+    <!-- Load Result Modal ends -->
 
-    </div>
-      <!-- Map Container end -->
+  </div>
+  <!-- Map Container end -->
 
 
-    <!-- Axios Script -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <!--leaflet Script  -->
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
-    <!-- leaflet marker cluster script -->
-    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster-src.js"></script>
-    <!-- Data from GovSG -->
-    <script src="data_govsg.js"></script>
-    <!-- Data from OneMap script -->
-    <script src="data_onemap.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <!-- Map script -->
-    <script src="map.js"></script>
-    <!-- Popper
-    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script> -->
-    <!-- Main script -->
-    <script src="script.js"></script>
-    <!-- Bootstrap script -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-      crossorigin="anonymous"></script>
+  <!-- Axios Script -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <!--leaflet Script  -->
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+  <!-- leaflet marker cluster script -->
+  <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster-src.js"></script>
+  <!-- Data from GovSG -->
+  <script src="data_govsg.js"></script>
+  <!-- Data from OneMap script -->
+  <script src="data_onemap.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <!-- Map script -->
+  <script src="map.js"></script>
+  <!-- Main script -->
+  <script src="script.js"></script>
+  <!-- Bootstrap script -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
 
 </body>
 

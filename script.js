@@ -50,7 +50,7 @@ async function main() {
         //to disable back the submit button and remove the address field 
         let oldAddress = document.getElementById("address");
         oldAddress.innerHTML = `<div id="address"></div>`;
-        
+
         let ableToSubmit = document.querySelector("#formButton");
         ableToSubmit.setAttribute('disabled', '');
 
@@ -72,30 +72,30 @@ async function main() {
 
         // retrieve value of address from form
         let inputAdd = document.querySelector('input[type="address"]').value;
-        let inputAddCapNoBlk = inputAdd.replace(/^\d+/,'');
+        let inputAddCapNoBlk = inputAdd.replace(/^\d+/, '');
 
         // transform the addresses so that it can be passed through as the correct parameter when making a query on Data.gov.sg
         var convertAdd = {
-        "AVENUE":"AVE",
-        "STREET":"ST",
-        "LORONG":"LOR",
-        "NORTH":"NTH",
-        "ROAD":"RD",
-        "PLACE":"PL",
-        "JALAN":"JLN",
-        "BUKIT":"BT",
-        "CLOSE":"CL",
-        "PARK":"PK",
-        "DRIVE":"DR",
-        "TANJONG":"TG",
-        "UPPER":"UPP",
-        "CRESCENT":"CRES",
-        "CENTRAL":"CTRL",
-        "COMMONWEALTH":"C'WEALTH",
+          "AVENUE": "AVE",
+          "STREET": "ST",
+          "LORONG": "LOR",
+          "NORTH": "NTH",
+          "ROAD": "RD",
+          "PLACE": "PL",
+          "JALAN": "JLN",
+          "BUKIT": "BT",
+          "CLOSE": "CL",
+          "PARK": "PK",
+          "DRIVE": "DR",
+          "TANJONG": "TG",
+          "UPPER": "UPP",
+          "CRESCENT": "CRES",
+          "CENTRAL": "CTRL",
+          "COMMONWEALTH": "C'WEALTH",
         };
 
-        streetName = inputAddCapNoBlk.replace(/AVENUE|STREET|LORONG|NORTH|ROAD|PLACE|JALAN|BUKIT|CLOSE|PARK|DRIVE|TANJONG|UPPER|CRESCENT|CENTRAL|COMMONWEALTH/gi, function(matched){
-        return convertAdd[matched];
+        streetName = inputAddCapNoBlk.replace(/AVENUE|STREET|LORONG|NORTH|ROAD|PLACE|JALAN|BUKIT|CLOSE|PARK|DRIVE|TANJONG|UPPER|CRESCENT|CENTRAL|COMMONWEALTH/gi, function (matched) {
+          return convertAdd[matched];
         });
 
         // clearing the markers
@@ -103,7 +103,7 @@ async function main() {
 
         // loading the results on the map
         await loadResult(streetName, flatType, resultLayer, map);
- 
+
       } else {
 
         // reset globaMarkerArray
@@ -117,64 +117,64 @@ async function main() {
         for (eachAddress of allAddress) {
           let block = eachAddress.BLOCK;
           let street = eachAddress.ROAD;
-         
-        // transform the addresses so that it can be passed through as the correct parameter when making a query on Data.gov.sg 
-        var convertAdd = {
-          "AVENUE":"AVE",
-          "STREET":"ST",
-          "LORONG":"LOR",
-          "NORTH":"NTH",
-          "ROAD":"RD",
-          "PLACE":"PL",
-          "JALAN":"JLN",
-          "BUKIT":"BT",
-          "CLOSE":"CL",
-          "PARK":"PK",
-          "DRIVE":"DR",
-          "TANJONG":"TG",
-          "UPPER":"UPP",
-          "CRESCENT":"CRES",
-          "CENTRAL":"CTRL",
-          "COMMONWEALTH":"C'WEALTH",
+
+          // transform the addresses so that it can be passed through as the correct parameter when making a query on Data.gov.sg 
+          var convertAdd = {
+            "AVENUE": "AVE",
+            "STREET": "ST",
+            "LORONG": "LOR",
+            "NORTH": "NTH",
+            "ROAD": "RD",
+            "PLACE": "PL",
+            "JALAN": "JLN",
+            "BUKIT": "BT",
+            "CLOSE": "CL",
+            "PARK": "PK",
+            "DRIVE": "DR",
+            "TANJONG": "TG",
+            "UPPER": "UPP",
+            "CRESCENT": "CRES",
+            "CENTRAL": "CTRL",
+            "COMMONWEALTH": "C'WEALTH",
           };
-  
-          streetName = street.replace(/AVENUE|STREET|LORONG|NORTH|ROAD|PLACE|JALAN|BUKIT|CLOSE|PARK|DRIVE|TANJONG|UPPER|CRESCENT|CENTRAL|COMMONWEALTH/gi, function(matched){
-          return convertAdd[matched];
+
+          streetName = street.replace(/AVENUE|STREET|LORONG|NORTH|ROAD|PLACE|JALAN|BUKIT|CLOSE|PARK|DRIVE|TANJONG|UPPER|CRESCENT|CENTRAL|COMMONWEALTH/gi, function (matched) {
+            return convertAdd[matched];
           });
 
           // calling the function to load the results on the map
           await loadNearestBlkResult(block, streetName, flatType, resultLayer, map);
-          };
-          
-          // remove spinner after finish loading
-          const spinnerBackground = document.querySelector("#spinner-background");
-          spinnerBackground.style.display = "none";
+        };
 
-          // count the number of markers generated
-          let count = 0;
-          for (let i = 0; i < globalMarkerCount.length; i++) {
-            count += globalMarkerCount[i].length;
-          };
+        // remove spinner after finish loading
+        const spinnerBackground = document.querySelector("#spinner-background");
+        spinnerBackground.style.display = "none";
 
-          if (count == 0){
+        // count the number of markers generated
+        let count = 0;
+        for (let i = 0; i < globalMarkerCount.length; i++) {
+          count += globalMarkerCount[i].length;
+        };
 
-             // load no transactions found on modal pop-up
-            const noModal = new bootstrap.Modal(document.getElementById("noResultModal"), {});
-            noModal.toggle();
+        if (count == 0) {
 
-          }else{
+          // load no transactions found on modal pop-up
+          const noModal = new bootstrap.Modal(document.getElementById("noResultModal"), {});
+          noModal.toggle();
 
-            // zoom into the search location on the map
-            let data = await loadOneMapData(getPostalCode);
-            let coordinate = data.eachCoordinate;
-            map.flyTo(coordinate, 17, {
+        } else {
+
+          // zoom into the search location on the map
+          let data = await loadOneMapData(getPostalCode);
+          let coordinate = data.eachCoordinate;
+          map.flyTo(coordinate, 17, {
             animate: true,
             duration: 2,
-            });
+          });
 
-            // load transaction counts found on modal pop-up
-            let showResultModal = document.getElementById("resultModal");
-            showResultModal.innerHTML = `
+          // load transaction counts found on modal pop-up
+          let showResultModal = document.getElementById("resultModal");
+          showResultModal.innerHTML = `
             <div class="modal-dialog modal-sm modal-dialog-centered">
               <div class="modal-content">
                 <div class="modal-header">
@@ -188,25 +188,25 @@ async function main() {
             </div>
           </div> `;
 
-            const resultModal = new bootstrap.Modal(document.getElementById("resultModal"), {});
-            resultModal.toggle();
-          };   
+          const resultModal = new bootstrap.Modal(document.getElementById("resultModal"), {});
+          resultModal.toggle();
+        };
       };
     });
 
     // Tooltips section
 
     // Search icon tooltip
-    document.querySelector("#exampleModal").addEventListener("hidden.bs.modal", function(){
+    document.querySelector("#exampleModal").addEventListener("hidden.bs.modal", function () {
       let searchToolTip = document.querySelector("#tooltip");
       searchToolTip.style.display = "block";
       function fadeOut() {
-          setTimeout(function() {
-            searchToolTip.style.opacity = 0;
-          }, 2500);
-          setTimeout(function(){
-            searchToolTip.style.display = "none";
-          }, 3000);
+        setTimeout(function () {
+          searchToolTip.style.opacity = 0;
+        }, 2500);
+        setTimeout(function () {
+          searchToolTip.style.display = "none";
+        }, 3000);
       };
       fadeOut();
     });

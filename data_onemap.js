@@ -14,7 +14,7 @@ async function loadOneMapData(postalCode) {
     let eachLon = response.data.results[0].LONGITUDE;
     let eachCoordinate = [eachLat, eachLon];
     object = { eachBlk, eachRoad, eachEstate, eachCoordinate };
-    
+
     return object;
 }
 

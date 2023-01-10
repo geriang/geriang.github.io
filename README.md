@@ -120,12 +120,9 @@ Testing instructions : TS
 
 The web application is hosted on Github
 
-Describe the process that you used to host your website on a hosting platform (such as Github pages or Heroku). Provide the following details: 
-1. What is your hosting platform? 
-2. How is the database hosted? 
-3. What are the environment variables and what are they responsible for? 4. What are the dependencies that your project used? 
-5. What are the deployment steps for the project? 
-You can provide deployment details in a separate document (PDF or another markdown file). There is no need to be original for this section; if another website or document have the steps, just link there and acknowledge the author in your credits, 
+The codes were first written in Visual Studio Code and subsequently pushed to Github repository.
+
+https://pages.github.com/ was then used to deploy the codes in the Github repository. 
 
 <h3>LIVE LINK</h3>
 
@@ -133,7 +130,9 @@ The application can be access here: https://geriang.github.io/
 
 <h3>LIMITATIONS & IMPROVEMENTS</h3>
 
-1. Reconfiguring address to match other api
+1. HDB transaction data from data.gov.sg and data from onemap.gov.sg have differences in the way address details were written. For example, Onemap writes a street name in full, i.e. Toa Payoh North, while the street name written in transaction data of data.gov.sg is in short form, i.e. Toa Payoh Nth. Sometime was spent to ensure that the street names from Onemap were modified to match the address form in Data.gov.sg so that the respective transaction details could be retrieved. However, I am not able to 100% guarantee that all the short forms were covered and modified and this may result in certain address not found.
+
+2. If time permits, I will create another search criteria so that users can search for transactions base on certain specific time frames such as past 3 month, 6 months etc.
 
 <h3>CREDITS AND ACKNOWLEDGMENT</h3>
 
