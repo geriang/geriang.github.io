@@ -151,6 +151,10 @@ using regex to remove only numbers in the beginning part of a string. This helpe
 https://stackoverflow.com/questions/15604140/replace-multiple-strings-with-multiple-other-strings
 solution to replace multiple words in a string and it helped me to shorten my codes.
 
+https://stackoverflow.com/questions/45798355/how-to-remove-zoom-in-and-out-on-leaflet-map-leaving-gps-icon
+removing leaflet map zoom in/out buttons
+
+
 Special thanks to Yong Sheng my codes and Ace for teaching me how to use the mapping function vs. for loop 
 =>  let data1 = [1,2,3]
     let data2 = ["a","b","c"]
