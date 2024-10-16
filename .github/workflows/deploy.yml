@@ -1,0 +1,31 @@
+name: Inject and Deploy
+
+on:
+  push:
+    branches:
+      - main   # This will trigger the workflow on a push to the main branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Step 2: Inject environment variables into HTML
+      - name: Replace environment variables in HTML
+        run: |
+          sed -i "s/{{ EMAIL }}/$EMAIL/" index.html
+          sed -i "s/{{ PASSWORD }}/$PASSWORD/" index.html
+        env:
+          EMAIL: ${{ secrets.EMAIL }}    # Using the EMAIL secret
+          PASSWORD: ${{ secrets.PASSWORD }} # Using the PASSWORD secret
+
+      # Step 3: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # GitHub token for deploying to Pages
+          publish_dir: ./ # Directory to deploy (root of the repository)
