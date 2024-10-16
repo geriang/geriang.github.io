@@ -218,7 +218,13 @@
   </div>
   <!-- Map Container end -->
 
-
+  <!-- env variables -->
+  <script>
+    window.ENV = {
+      EMAIL: "{{ EMAIL}}",
+      PASSWORD: "{{ PASSWORD }}"
+    };
+  </script>
   <!-- Axios Script -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <!--leaflet Script  -->
