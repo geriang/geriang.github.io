@@ -67,6 +67,9 @@ async function main() {
       // retrieve value of flat type from form
       let flatType = document.querySelector("#flat").value;
 
+      // retrieve value of year from form
+      let year = document.querySelector('input[type="year"]').value;
+
       // determine which result to load, if get results by street is checked:
       if (document.getElementById("flexRadioDefault1").checked) {
 
@@ -102,7 +105,7 @@ async function main() {
         resultLayer.clearLayers();
 
         // loading the results on the map
-        await loadResult(streetName, flatType, resultLayer, map);
+        await loadResult(year, streetName, flatType, resultLayer, map);
 
       } else {
 
@@ -143,7 +146,7 @@ async function main() {
           });
 
           // calling the function to load the results on the map
-          await loadNearestBlkResult(block, streetName, flatType, resultLayer, map);
+          await loadNearestBlkResult(year, block, streetName, flatType, resultLayer, map);
         };
 
         // remove spinner after finish loading
@@ -209,6 +212,18 @@ async function main() {
         }, 3000);
       };
       fadeOut();
+    });
+
+    // Tooltips for Year
+    document.querySelector("#questionMarkYear").addEventListener("mouseover", function () {
+      let yearToolTip = document.querySelector("#helpYear");
+      yearToolTip.style.display = "block";
+    });
+
+    // remove tooltips
+    document.querySelector("#questionMarkYear").addEventListener("mouseout", function () {
+      let yearToolTip = document.querySelector("#helpYear");
+      yearToolTip.style.display = "none";
     });
 
     // Tooltips for Postal Code

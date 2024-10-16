@@ -40,6 +40,14 @@
 }
 
 /* positioning the question marks in the search form */
+#questionMarkYear {
+    position: relative;
+    height: 50px;
+    width: 50px;
+    left: 0px;
+    top: 38px;
+}
+
 #questionMarkPostalCode {
     position: relative;
     height: 50px;
@@ -95,6 +103,11 @@
 #formButton {
     position: relative;
     left: 90px;
+}
+
+/* hiding tooltip for year field*/
+#helpYear {
+    display: none;
 }
 
 /* hiding tooltip for postal code field*/

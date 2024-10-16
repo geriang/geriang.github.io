@@ -23,7 +23,7 @@ const houseIcon = L.icon({
 });
 
 // load street type results on result layer that is added to map
-async function loadResult(streetName, flatType, resultLayer, map) {
+async function loadResult(year, streetName, flatType, resultLayer, map) {
 
   // reset globaMarkerArray
   globalMarkerCount = [];
@@ -32,7 +32,7 @@ async function loadResult(streetName, flatType, resultLayer, map) {
   let markerClusterLayer = L.markerClusterGroup();
 
   // importing flat price, block, floor information etc. from data_govsg.js via loadTransactionInfo function
-  let data = await loadTransactionInfo(2022, streetName, flatType);
+  let data = await loadTransactionInfo(year, streetName, flatType);
 
   // Load coordinates and find center point of searched results on map
   let coordinates = data[1];
@@ -107,17 +107,18 @@ async function loadResult(streetName, flatType, resultLayer, map) {
 };
 
 // load nearest block result
-async function loadNearestBlkResult(block, streetName, flatType, resultLayer) {
+async function loadNearestBlkResult(year, block, streetName, flatType, resultLayer) {
 
   // load coordinates for search result according to 500m radius
-  let coordinates = await loadNearbyCoordinate(2022, block, streetName, flatType);
+  let coordinates = await loadNearbyCoordinate(year, block, streetName, flatType);
   globalMarkerCount.push(coordinates);
 
   // adding Marker Cluster Layer
   let markerClusterLayer = L.markerClusterGroup();
 
   // importing flat price, block, floor information etc. from data_govsg.js via loadNearbyTransactionInfo function
-  let data = await loadNearbyTransactionInfo(2022, block, streetName, flatType);
+  
+  let data = await loadNearbyTransactionInfo(year, block, streetName, flatType);
 
   // Map coordinates and transaction infomation
   coordinates.map((pos, index) => {

@@ -1,6 +1,7 @@
-const baseApiUrl = "https://developers.onemap.sg/commonapi/search?searchVal=";
-const oneMapToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjk2MTYsInVzZXJfaWQiOjk2MTYsImVtYWlsIjoic2hvcHBpbmdhY2M4NEBnbWFpbC5jb20iLCJmb3JldmVyIjpmYWxzZSwiaXNzIjoiaHR0cDpcL1wvb20yLmRmZS5vbmVtYXAuc2dcL2FwaVwvdjJcL3VzZXJcL3Nlc3Npb24iLCJpYXQiOjE2NzM1MjQ0MjAsImV4cCI6MTY3Mzk1NjQyMCwibmJmIjoxNjczNTI0NDIwLCJqdGkiOiJiN2Y1ZDJkMmU2ZDYxM2Q0NGQ0MDFmN2Q2ZDRiNmMyMSJ9.rg8ePRg1DRNKJ_8yrcgxAyS3fWWLa_LwQmpppuKZhQc";
-const basePrivateApiUrl = "https://developers.onemap.sg/privateapi/commonsvc/revgeocode?";
+const baseApiUrl = "https://www.onemap.gov.sg/api/common/elastic/search?searchVal=";
+const basePrivateApiUrl = "https://www.onemap.gov.sg/api/public/revgeocode?";
+const tokenUrl= "https://www.onemap.gov.sg/api/auth/post/getToken";
+
 
 // function that requires a postal code as input to generate address amd estate
 async function loadOneMapData(postalCode) {
@@ -32,11 +33,20 @@ async function loadOneMapDataCoordinateUsingAddress(eachAddress) {
 
 // function that requires postal code as input to generate surrounding HDBs
 async function loadOneMapDataHDB(postalCode) {
+
+    const email = process.env.NETLIFY_EMAIL;
+    const password = process.env.NETLIFY_PASSWORD;
+
+    let tokenData = await axios.post(tokenUrl, {"email": email, "password": password})
+    oneMapToken = tokenData.data.access_token
+
     let data = await loadOneMapData(postalCode);
     let coordinate = data.eachCoordinate;
-    let endpoint = `${basePrivateApiUrl}location=${coordinate}&token=${oneMapToken}&buffer=500&addressType=HDB`;
-    let response = await axios.get(endpoint);
-
+    let endpoint = `${basePrivateApiUrl}location=${coordinate}&buffer=500&addressType=HDB`;
+    let response = await axios.get(endpoint, 
+                                { headers: {"Authorization" : `Bearer ${oneMapToken}`} 
+                            });
+    console.log(response.data) 
     return response.data;
 };
 

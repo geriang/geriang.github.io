@@ -63,7 +63,7 @@
             <p>2. Key in the postal code of your address</p>
             <p>3. Select the type of HDB Flat you are enquirying</p>
             <p>4. Select the type of search result, display by street or nearest blocks</p>
-            <p>Take note that this app can only be used to search for <b>HDB transactions in 2022</b></p>
+            <p>Take note that this app can only be used to search for <b>HDB transactions after 2016</b></p>
             <p>For feedback, please write to SGxProperty@gmail.com</p>
           </div>
         </div>
@@ -88,6 +88,22 @@
 
           <!-- Form starts-->
           <div class="container">
+            <!-- Year code field -->
+            <div class="row">
+              <div class="col-10">
+                <div id="year" class="form-floating mb-0 mt-3">
+                  <input type="year" class="form-control" id="floatingInput" name="year"
+                    placeholder="Year" maxlength="4" required>
+                  <label for="floatingInput">Year</label>
+                  <div id="helpYear" class="form-text text-danger ms-1">
+                    Key in the search year from 2017 onwards.
+                  </div>
+                </div>
+              </div>
+              <div id="questionMarkYear" class="col-2">
+                <img src="icons/question.png" style="height:15px; width:15px">
+              </div>
+            </div>
             <!-- Postal code field -->
             <div class="row">
               <div class="col-10">

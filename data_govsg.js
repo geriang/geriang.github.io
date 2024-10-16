@@ -1,5 +1,5 @@
-const dataGovSGBaseApiUrl = "https://data.gov.sg/api/action/datastore_search";
-const resourceID = "?resource_id=f1765b54-a209-4718-8d38-a39237f502b3";
+const dataGovSGBaseApiUrl = "https://data.gov.sg/api/action/datastore_search?resource_id=";
+const resourceID = "d_8b84c4ee58e3cfc0ece0d773c8ca6abc";
 
 // enter year and street name to retrieve coordinates and transaction information 
 async function loadTransactionInfo(year, streetName, flatType) {
