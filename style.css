@@ -1,0 +1,178 @@
+/* Navbar styling */
+.navbar {
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    opacity: 0.7;
+    z-index: 1500;
+}
+
+
+/* Information Button cofiguration */
+#modalButton {
+    position: fixed;
+    height: 45px;
+    width: 45px;
+    opacity: 0.8;
+    top: 80px;
+    left: 12px;
+    z-index: 1000;
+}
+
+/* The container that contains the map */
+#mapContainer {
+    position: relative;
+}
+
+/* The map itself */
+#map {
+    height: 100vh;
+}
+
+/* The container that contains the search form */
+#inputContainer {
+    position: fixed;
+    /*320px; */
+    width: 360px;
+    top: 132px;
+    left: 0px;
+    z-index: 900;
+}
+
+/* positioning the question marks in the search form */
+#questionMarkYear {
+    position: relative;
+    height: 50px;
+    width: 50px;
+    left: 0px;
+    top: 38px;
+}
+
+#questionMarkPostalCode {
+    position: relative;
+    height: 50px;
+    width: 50px;
+    left: 0px;
+    top: 30px;
+}
+
+#questionMarkRoomType {
+    position: relative;
+    height: 50px;
+    width: 50px;
+    left: 0px;
+    top: 15px;
+}
+
+#questionMarkSearchType {
+    position: relative;
+    height: 50px;
+    width: 50px;
+    left: 0px;
+    top: 8px;
+}
+
+
+/* To allow scroll bar for the search form when the detected screen size is small */
+@media only screen and (max-height: 600px) {
+    #collapseExample {
+        height: 300px;
+    }
+}
+
+/* Search button to trigger the search form */
+#searchButton {
+    height: 45px;
+    width: 45px;
+    opacity: 0.8;
+}
+
+/* positioning the search icon in the button  */
+.searchCenter {
+    height: 23px;
+    width: 23px;
+}
+
+/* positioning the information icon in the the button that triggers the modal to display information  */
+.modalCenter {
+    height: 21px;
+    width: 20px;
+}
+
+/* positioning the Submit button at the end of the search form */
+#formButton {
+    position: relative;
+    left: 90px;
+}
+
+/* hiding tooltip for year field*/
+#helpYear {
+    display: none;
+}
+
+/* hiding tooltip for postal code field*/
+#helpPostal {
+    display: none;
+}
+
+/* hiding tooltip for HDB Type selection field*/
+#helpDropdown {
+    display: none;
+}
+
+/* hiding tooltip for radio button search result type field*/
+#helpRadio {
+    display: none;
+}
+
+/* Configuration for spinner  */
+#spinner-background {
+    background-color: black;
+    opacity: 0.7;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+/* Configuration for spinner */
+.spinner-border {
+    height: 60px;
+    width: 60px;
+}
+
+/* Search button tooltip */
+
+#tooltip {
+    position: fixed;
+    top: 132px;
+    left: 80px;
+    background: rgb(255, 255, 255);
+    color: red;
+    height: 45px;
+    width: 120px;
+    font-weight: bold;
+    padding: 10px 8px;
+    font-size: 14px;
+    border-radius: 4px;
+    display: none;
+    opacity: 0.7;
+}
+
+.arrow::before {
+    position: fixed;
+    top: 135px;
+    left: 65px;
+    content: "";
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 15px solid white;
+    opacity: 0.9;
+}
