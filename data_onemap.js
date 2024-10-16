@@ -34,10 +34,10 @@ async function loadOneMapDataCoordinateUsingAddress(eachAddress) {
 // function that requires postal code as input to generate surrounding HDBs
 async function loadOneMapDataHDB(postalCode) {
 
-    // const email = process.env.NETLIFY_EMAIL;
-    // const password = process.env.NETLIFY_PASSWORD;
     const email = window.ENV.NETLIFY_EMAIL;
     const password = window.ENV.NETLIFY_PASSWORD;
+
+    console.log(email)
 
     let tokenData = await axios.post(tokenUrl, {"email": email, "password": password})
     oneMapToken = tokenData.data.access_token

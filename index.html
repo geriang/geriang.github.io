@@ -221,9 +221,11 @@
   <!-- env variables -->
   <script>
     window.ENV = {
-      EMAIL: "{{ EMAIL}}",
-      PASSWORD: "{{ PASSWORD }}"
+      NETLIFY_EMAIL: "{{ NETLIFY_EMAIL }}",
+      NETLIFY_PASSWORD: "{{ NETLIFY_PASSWORD }}"
     };
+  
+ 
   </script>
   <!-- Axios Script -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
