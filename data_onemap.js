@@ -37,8 +37,6 @@ async function loadOneMapDataHDB(postalCode) {
     const email = window.ENV.NETLIFY_EMAIL;
     const password = window.ENV.NETLIFY_PASSWORD;
 
-    console.log(email)
-
     let tokenData = await axios.post(tokenUrl, {"email": email, "password": password})
     oneMapToken = tokenData.data.access_token
 
